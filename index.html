@@ -216,7 +216,7 @@
     gap:clamp(20px,2.6vw,34px);
   }
   .work-card{display:block}
-  .work-card:nth-child(9){display:none} /* desktop 4-col: keep 8 (4x2) */
+  .works-grid li:nth-child(9){display:none} /* desktop 4-col: keep 8 (4x2) */
   .work-figure{
     margin:0; position:relative; overflow:hidden;
     aspect-ratio:1; background:var(--surface);
@@ -367,7 +367,7 @@
     .to-top-eye{display:inline-block; margin-right:9px; vertical-align:-3px}
     .to-top-arrow{display:none}
     .works-grid{grid-template-columns:repeat(3,1fr)}
-    .work-card:nth-child(9){display:block} /* tablet 3-col: show 9 (3x3) */
+    .works-grid li:nth-child(9){display:block} /* tablet 3-col: show 9 (3x3) */
     .about-grid{grid-template-columns:1fr; gap:clamp(28px,4vw,48px)}
     .about-media{max-width:min(360px,80vw); margin-inline:auto}
   }
