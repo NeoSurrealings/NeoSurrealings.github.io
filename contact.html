@@ -204,6 +204,8 @@
   .c-body{font-family:var(--font-mono); font-size:13px; letter-spacing:.04em; line-height:2; margin:0}
   .c-body a{border-bottom:1px solid var(--border); padding-bottom:1px; transition:color .3s, border-color .3s}
   .c-body a:hover{color:var(--accent); border-color:var(--accent)}
+  .c-body .ig-link{display:inline-flex; align-items:center; gap:7px}
+  .c-body .ig-icon{width:14px; height:14px; flex:0 0 auto}
 
   /* ---------- Floating eye (back to top) ---------- */
   .orb{
@@ -333,13 +335,9 @@
             <span class="c-label" data-i18n="col.studio">Studio</span>
             <p class="c-body" data-i18n-html="col.studio.body">Lichtenberg, Berlin<br>Visits by appointment</p>
           </div>
-          <div class="c-col" data-od-id="c-representation">
-            <span class="c-label" data-i18n="col.rep">Representation</span>
-            <p class="c-body" data-i18n-html="col.rep.body">Kitsune Gallery, Berlin<br>kitsunegallery.jp ↗</p>
-          </div>
           <div class="c-col" data-od-id="c-socials">
             <span class="c-label" data-i18n="col.socials">Socials</span>
-            <p class="c-body"><a href="https://www.instagram.com/andykrings/" target="_blank" rel="noopener" data-od-id="contact-instagram">Instagram ↗</a><br><a href="#" data-od-id="contact-artsy">Artsy ↗</a><br><a href="#" data-od-id="contact-pinterest">Pinterest ↗</a></p>
+            <p class="c-body"><a class="ig-link" href="https://www.instagram.com/andykrings_art/" target="_blank" rel="noopener" data-od-id="contact-instagram"><svg class="ig-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"></rect><circle cx="12" cy="12" r="4.1"></circle><circle cx="17" cy="7" r="1.05" fill="currentColor" stroke="none"></circle></svg>Instagram ↗</a></p>
           </div>
         </aside>
       </div>
@@ -554,10 +552,8 @@
       'contact.submit': 'Nachricht senden <span aria-hidden="true">↗</span>',
       'contact.note': 'Direkt von dieser Seite gesendet — keine Mail-App, Ihre Adresse bleibt privat.',
       'col.studio': 'Atelier',
-      'col.rep': 'Galerie',
       'col.socials': 'Social Media',
-      'col.studio.body': 'Lichtenberg, Berlin<br>Besuch nach Vereinbarung',
-      'col.rep.body': 'Kitsune Gallery, Berlin<br>kitsunegallery.jp ↗'
+      'col.studio.body': 'Lichtenberg, Berlin<br>Besuch nach Vereinbarung'
     }
   };
 </script>

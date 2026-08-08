@@ -69,11 +69,7 @@
 
     // exhibition names (used on schedule.html + index teaser)
     'schedule.exh': 'Ausstellungen & Termine',
-    'ex.1': 'Das Gewicht des Schwebens',
-    'ex.2': 'Räume ohne Ecken',
-    'ex.3': 'Was der Mond vergaß',
-    'ex.4': 'Der Garten, der fortzog',
-    'ex.5': 'Blaue Stunden',
+    'ex.1': 'Fotoshooting',
   };
 
   function getLang() {
