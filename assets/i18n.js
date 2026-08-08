@@ -12,10 +12,12 @@
     // nav / menu
     'nav.works': 'Arbeiten',
     'nav.schedule': 'Termine',
+    'nav.diary': 'Tagebuch',
     'nav.about': 'Über',
     'nav.contact': 'Kontakt',
     'menu.works': 'Arbeiten',
     'menu.schedule': 'Termine',
+    'menu.diary': 'Tagebuch',
     'menu.about': 'Über',
     'menu.contact': 'Kontakt',
     'menu.close': 'Schließen',

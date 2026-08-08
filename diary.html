@@ -1,0 +1,2442 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diary — Andreas Krings</title>
+<meta name="description" content="Pages from the sketchbook of Andreas Krings — photographed from the book.">
+<script>document.documentElement.classList.add('js')</script>
+<style>
+  :root{
+    --bg:      oklch(98% 0.004 95);
+    --surface: oklch(100% 0.002 95);
+    --fg:      oklch(20% 0.018 70);
+    --muted:   oklch(48% 0.012 70);
+    --border:  oklch(90% 0.006 95);
+    --accent:  oklch(52% 0.10 28);
+    --font-display: 'Iowan Old Style','Charter',Georgia,serif;
+    --font-body:    -apple-system,BlinkMacSystemFont,'Segoe UI',system-ui,sans-serif;
+    --font-mono:    ui-monospace,'SF Mono','JetBrains Mono',Menlo,monospace;
+    --measure: 1280px;
+    --pad: clamp(20px, 5vw, 64px);
+    --header-h: 72px;
+    --ease: cubic-bezier(.22,.61,.36,1);
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--fg);
+    font-family:var(--font-body);
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  ::selection{background:var(--accent); color:var(--surface)}
+  img{display:block; max-width:100%}
+  a{color:inherit; text-decoration:none}
+  :focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+
+  /* ---------- Shared ---------- */
+  .shell{max-width:var(--measure); margin-inline:auto; padding-inline:var(--pad)}
+  .kicker{
+    font-family:var(--font-mono);
+    font-size:11px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--muted);
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+  }
+  .kicker::before{content:""; width:6px; height:6px; border-radius:50%; background:var(--accent)}
+  .js .reveal{opacity:0; transform:translateY(26px); transition:opacity .7s var(--ease), transform .7s var(--ease)}
+  .js .reveal.in{opacity:1; transform:none}
+
+  /* ---------- Header ---------- */
+  .site-header{
+    position:sticky; top:0; z-index:40;
+    height:var(--header-h);
+    background:color-mix(in oklch, var(--bg) 88%, transparent);
+    -webkit-backdrop-filter:blur(10px); backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .site-header .shell{height:100%; display:flex; align-items:center; justify-content:space-between; gap:24px}
+  .brand{font-family:var(--font-display); font-size:19px; letter-spacing:-.01em}
+  .brand em{font-style:italic}
+  .nav{display:flex; align-items:center; gap:clamp(16px,2.4vw,32px)}
+  .nav-link{
+    font-family:var(--font-mono);
+    font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+    position:relative; padding:6px 2px;
+  }
+  .nav-link::after{
+    content:""; position:absolute; left:2px; right:2px; bottom:0; height:1px;
+    background:var(--accent); transform:scaleX(0); transform-origin:left;
+    transition:transform .35s var(--ease);
+  }
+  .nav-link:hover{color:var(--accent)}
+  .nav-link:hover::after,.nav-link:focus-visible::after{transform:scaleX(1)}
+  .nav-link[aria-current="page"]{color:var(--accent)}
+  .nav-link[aria-current="page"]::after{transform:scaleX(1)}
+  .lang-toggle{display:inline-flex; align-items:center; gap:8px; background:none; border:0; padding:6px 2px; cursor:pointer; font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; color:var(--muted); text-transform:uppercase; white-space:nowrap}
+  .lang-toggle__cur{color:var(--fg); font-weight:600}
+  .lang-toggle:hover{color:var(--accent)}
+  .lang-toggle:hover .lang-toggle__cur{color:var(--accent)}
+  .lang-toggle:focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+  .menu .lang-toggle{margin-top:clamp(20px,4vh,40px)}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .nav-toggle{display:none; background:none; border:1px solid var(--fg); color:var(--fg); font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; padding:10px 16px; cursor:pointer; min-height:44px}
+  .nav-toggle:hover{background:var(--fg); color:var(--bg)}
+
+  .menu{
+    position:fixed; inset:0; z-index:50; background:var(--bg);
+    display:flex; flex-direction:column; justify-content:center;
+    padding:var(--pad);
+    transform:translateY(-102%); visibility:hidden;
+    transition:transform .5s var(--ease), visibility .5s;
+  }
+  .menu.open{transform:none; visibility:visible}
+  .menu-close{position:absolute; top:18px; right:var(--pad); background:none; border:1px solid var(--fg); color:var(--fg); font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; padding:10px 16px; cursor:pointer; min-height:44px}
+  .menu-close:hover{background:var(--fg); color:var(--bg)}
+  .menu-link{font-family:var(--font-display); font-size:clamp(36px,9vw,56px); line-height:1.2; padding:6px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:baseline}
+  .menu-link small{font-family:var(--font-mono); font-size:11px; letter-spacing:.16em; color:var(--muted)}
+  .menu-link:hover{color:var(--accent)}
+  .menu-foot{margin-top:clamp(32px,6vh,64px); font-family:var(--font-mono); font-size:12px; letter-spacing:.06em; color:var(--muted)}
+  .menu-foot a{border-bottom:1px solid var(--border); padding-bottom:1px; transition:color .3s, border-color .3s}
+  .menu-foot a:hover{color:var(--accent); border-color:var(--accent)}
+
+  /* ---------- Diary index ---------- */
+  .dy-view{border-top:none; padding-top:clamp(48px,6vh,72px); padding-bottom:clamp(80px,10vw,120px)}
+  .dy-head{margin-bottom:clamp(36px,5vw,64px)}
+  .dy-title{
+    font-family:var(--font-display);
+    font-weight:400;
+    font-size:clamp(52px,8.6vw,110px);
+    line-height:.98;
+    letter-spacing:-.02em;
+    margin:18px 0 0;
+    text-wrap:balance;
+  }
+  .dy-sub{
+    display:flex; justify-content:space-between; align-items:baseline; gap:24px;
+    margin-top:clamp(20px,2.6vw,30px);
+    padding-top:clamp(16px,2vw,22px);
+    border-top:1px solid var(--border);
+    font-family:var(--font-mono);
+    font-size:11px; letter-spacing:.12em; text-transform:uppercase;
+    color:var(--muted);
+  }
+  .dy-sub p{margin:0}
+  .dy-sub .dy-count{white-space:nowrap}
+
+  /* ---------- Grid (3:2 — the book pages are landscape) ---------- */
+  .works-grid{
+    list-style:none; margin:0; padding:0;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:clamp(14px,1.8vw,24px);
+  }
+  .work-card{display:block}
+  .work-figure{
+    margin:0; position:relative; overflow:hidden;
+    aspect-ratio:3/2; background:var(--surface);
+    border:1px solid var(--border);
+    transition:border-color .4s var(--ease);
+  }
+  .work-figure img{width:100%; height:100%; object-fit:cover; transition:transform .7s var(--ease)}
+  .work-card:hover .work-figure{border-color:color-mix(in oklch, var(--fg) 30%, var(--border))}
+  .work-card:hover .work-figure img{transform:scale(1.035)}
+
+  .work-reveal{
+    position:absolute; inset:auto 0 0 0;
+    background:color-mix(in oklch, var(--surface) 82%, transparent);
+    -webkit-backdrop-filter:blur(4px); backdrop-filter:blur(4px);
+    border-top:1px solid var(--border);
+    padding:8px 12px 10px;
+    transform:translateY(102%);
+    transition:transform .45s var(--ease);
+    display:flex; justify-content:space-between; align-items:baseline; gap:12px;
+    font-family:var(--font-mono);
+  }
+  .work-card:hover .work-reveal,.work-card:focus-visible .work-reveal{transform:none}
+  .work-reveal__index{font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
+
+  .work-caption{display:none}
+  @media (hover:none){
+    .work-reveal{display:none}
+    .work-caption{
+      display:flex; justify-content:space-between; align-items:baseline; gap:16px;
+      margin-top:8px;
+    }
+    .work-caption .wc-meta{font-family:var(--font-mono); font-size:10px; letter-spacing:.08em; color:var(--muted); text-transform:uppercase; white-space:nowrap}
+  }
+
+  /* ---------- Floating eye (draggable -> All Works) ---------- */
+  .orb{
+    position:fixed;
+    bottom:clamp(20px,4vh,44px);
+    right:clamp(10px,1.2vw,22px);
+    width:clamp(54px,6.8vw,84px);
+    display:flex; align-items:center; justify-content:center;
+    cursor:grab;
+    touch-action:none;
+    -webkit-user-select:none; user-select:none;
+    animation:bob 7s ease-in-out infinite;
+    filter:drop-shadow(0 14px 24px rgba(27,21,13,.18));
+  }
+  .orb.dragging{animation:none; cursor:grabbing; z-index:60}
+  .orb.dragging svg{transform:scale(.96); transition:none}
+  .orb svg{display:block; width:100%; height:auto; transition:transform .35s var(--ease)}
+  .orb .eye-blink{transform-box:fill-box; transform-origin:center; animation:blink 8s ease-in-out infinite}
+  @keyframes blink{0%,90%{transform:scaleY(1)}93%{transform:scaleY(.08)}96%,100%{transform:scaleY(1)}}
+  .orb:hover svg{transform:scale(1.07)}
+  .orb:focus-visible{outline:2px solid var(--accent); outline-offset:6px; border-radius:50%}
+  .orb.dragging .eye-blink{animation:none}
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+
+  /* ---------- Lightbox (diary viewer) ---------- */
+  .fs{
+    position:fixed; inset:0; z-index:90;
+    background:var(--surface);
+    display:none;
+    align-items:center; justify-content:center;
+    padding:clamp(16px,3vw,40px);
+  }
+  .fs.open{display:flex}
+  .fs-img{
+    max-width:100%; max-height:92vh; width:auto; height:auto;
+    object-fit:contain;
+    box-shadow:0 12px 40px rgba(27,21,13,.18);
+  }
+  .fs-close{
+    position:absolute; top:clamp(12px,2.5vw,24px); right:clamp(12px,2.5vw,24px);
+    background:none; border:0; color:var(--fg); cursor:pointer;
+    width:44px; height:44px; display:flex; align-items:center; justify-content:center;
+  }
+  .fs-close svg{width:22px; height:22px; display:block}
+  .fs-close:hover{color:var(--accent)}
+  .fs-close:active{transform:scale(.92)}
+  .fs-close:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:0}
+  .fs-nav{
+    position:absolute; top:50%; transform:translateY(-50%);
+    background:none; border:0; cursor:pointer; color:var(--muted);
+    width:56px; height:64px; display:flex; align-items:center; justify-content:center;
+    padding:0;
+  }
+  .fs-nav svg{width:clamp(22px,2.6vw,30px); height:auto; display:block}
+  .fs-nav:hover{color:var(--accent)}
+  .fs-nav:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+  .fs-prev{left:clamp(8px,2vw,28px)}
+  .fs-next{right:clamp(8px,2vw,28px)}
+  .fs-count{
+    position:absolute; bottom:clamp(12px,2.5vw,24px); left:50%; transform:translateX(-50%);
+    font-family:var(--font-mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+    color:var(--muted); white-space:nowrap;
+  }
+
+  /* ---------- Footer ---------- */
+  .site-footer{border-top:1px solid var(--border); padding-block:30px}
+  .site-footer .shell{display:flex; align-items:center; justify-content:space-between; gap:20px; font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted)}
+  .to-top{padding:6px 2px; color:var(--muted); transition:color .3s}
+  .to-top:hover{color:var(--accent)}
+  .to-top-eye{display:none; width:17px; height:auto}
+  .to-top-eye svg{display:block; width:100%; height:auto}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:1120px){
+    .orb{right:clamp(10px,1.2vw,22px)}
+    .works-grid{grid-template-columns:repeat(3,1fr)}
+  }
+  @media (max-width:900px){
+    .orb{width:clamp(48px,12vw,60px)}
+    .to-top-eye{display:inline-block; margin-right:9px; vertical-align:-3px}
+    .to-top-arrow{display:none}
+    .works-grid{grid-template-columns:repeat(3,1fr)}
+    .work-reveal{display:none}
+    .work-caption{display:none}
+  }
+  @media (max-width:760px){
+    .nav{display:none}
+    .site-header .lang-toggle{display:none}
+    .nav-toggle{display:inline-block}
+    .site-footer .shell{flex-wrap:wrap; row-gap:10px; justify-content:center}
+    .works-grid{grid-template-columns:repeat(3,1fr); gap:10px}
+    .work-caption{display:none}
+    .dy-sub{flex-direction:column; align-items:flex-start; gap:6px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important; transition:none!important}
+    html{scroll-behavior:auto}
+    .js .reveal{opacity:1; transform:none}
+  }
+</style>
+</head>
+<body id="top">
+
+  <header class="site-header" data-od-id="site-header">
+    <div class="shell">
+      <a class="brand" href="index.html" data-od-id="brand">Andreas <em>Krings</em></a>
+      <nav class="nav" aria-label="Primary">
+        <a class="nav-link" href="all-works.html" data-od-id="nav-works" data-i18n="nav.works">Works</a>
+        <a class="nav-link" href="schedule.html" data-od-id="nav-schedule" data-i18n="nav.schedule">Schedule</a>
+        <a class="nav-link" href="diary.html" aria-current="page" data-od-id="nav-diary" data-i18n="nav.diary">Diary</a>
+        <a class="nav-link" href="about.html" data-od-id="nav-about" data-i18n="nav.about">About</a>
+        <a class="nav-link" href="contact.html" data-od-id="nav-contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+      <button class="lang-toggle" type="button" aria-pressed="false" aria-label="Switch language" data-od-id="lang-toggle"><span class="lang-toggle__cur">EN</span> / <span class="lang-toggle__alt">DE</span></button>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu" data-od-id="menu-open">Menu</button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" data-od-id="menu" aria-hidden="true">
+    <button class="menu-close" type="button" data-od-id="menu-close" aria-label="Close menu" data-i18n="menu.close">Close</button>
+    <nav aria-label="Menu">
+      <a class="menu-link" href="all-works.html" data-od-id="menu-works" data-i18n="menu.works">Works <small>01</small></a>
+      <a class="menu-link" href="schedule.html" data-od-id="menu-schedule" data-i18n="menu.schedule">Schedule <small>02</small></a>
+      <a class="menu-link" href="diary.html" aria-current="page" data-od-id="menu-diary" data-i18n="menu.diary">Diary <small>03</small></a>
+      <a class="menu-link" href="about.html" data-od-id="menu-about" data-i18n="menu.about">About <small>04</small></a>
+      <a class="menu-link" href="contact.html" data-od-id="menu-contact" data-i18n="menu.contact">Contact <small>05</small></a>
+    </nav>
+    <button class="lang-toggle" type="button" aria-pressed="false" aria-label="Switch language"><span class="lang-toggle__cur">EN</span> / <span class="lang-toggle__alt">DE</span></button>
+    <p class="menu-foot" data-i18n="menu.foot">Berlin, Germany · <a href="contact.html" data-i18n="menu.foot.link">Send a message</a></p>
+  </div>
+
+  <main>
+    <section class="dy-view" data-od-id="section-diary" aria-labelledby="dy-title">
+      <div class="shell">
+        <div class="dy-head reveal in">
+          <p class="kicker" data-od-id="dy-kicker" data-i18n="dy.kicker">03 — Diary</p>
+          <h1 class="dy-title" id="dy-title" data-od-id="dy-title" data-i18n="dy.title">Diary</h1>
+          <div class="dy-sub">
+            <p class="dy-intro" data-od-id="dy-intro" data-i18n="dy.intro">Pages from the sketchbook — photographed from the book.</p>
+            <p class="dy-count" data-od-id="dy-count" data-i18n="dy.count">210 pages</p>
+          </div>
+        </div>
+
+        <ul class="works-grid" data-od-id="diary-grid">
+          <li>
+            <button type="button" class="work-card" data-n="1" data-od-id="dy-card-001" aria-label="Diary page 1">
+              <span class="work-figure">
+                <img src="assets/diary/diary-001.jpg" alt="Diary page 1" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 001 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 001 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="2" data-od-id="dy-card-002" aria-label="Diary page 2">
+              <span class="work-figure">
+                <img src="assets/diary/diary-002.jpg" alt="Diary page 2" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 002 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 002 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="3" data-od-id="dy-card-003" aria-label="Diary page 3">
+              <span class="work-figure">
+                <img src="assets/diary/diary-003.jpg" alt="Diary page 3" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 003 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 003 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="4" data-od-id="dy-card-004" aria-label="Diary page 4">
+              <span class="work-figure">
+                <img src="assets/diary/diary-004.jpg" alt="Diary page 4" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 004 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 004 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="5" data-od-id="dy-card-005" aria-label="Diary page 5">
+              <span class="work-figure">
+                <img src="assets/diary/diary-005.jpg" alt="Diary page 5" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 005 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 005 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="6" data-od-id="dy-card-006" aria-label="Diary page 6">
+              <span class="work-figure">
+                <img src="assets/diary/diary-006.jpg" alt="Diary page 6" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 006 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 006 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="7" data-od-id="dy-card-007" aria-label="Diary page 7">
+              <span class="work-figure">
+                <img src="assets/diary/diary-007.jpg" alt="Diary page 7" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 007 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 007 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="8" data-od-id="dy-card-008" aria-label="Diary page 8">
+              <span class="work-figure">
+                <img src="assets/diary/diary-008.jpg" alt="Diary page 8" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 008 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 008 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="9" data-od-id="dy-card-009" aria-label="Diary page 9">
+              <span class="work-figure">
+                <img src="assets/diary/diary-009.jpg" alt="Diary page 9" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 009 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 009 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="10" data-od-id="dy-card-010" aria-label="Diary page 10">
+              <span class="work-figure">
+                <img src="assets/diary/diary-010.jpg" alt="Diary page 10" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 010 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 010 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="11" data-od-id="dy-card-011" aria-label="Diary page 11">
+              <span class="work-figure">
+                <img src="assets/diary/diary-011.jpg" alt="Diary page 11" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 011 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 011 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="12" data-od-id="dy-card-012" aria-label="Diary page 12">
+              <span class="work-figure">
+                <img src="assets/diary/diary-012.jpg" alt="Diary page 12" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 012 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 012 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="13" data-od-id="dy-card-013" aria-label="Diary page 13">
+              <span class="work-figure">
+                <img src="assets/diary/diary-013.jpg" alt="Diary page 13" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 013 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 013 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="14" data-od-id="dy-card-014" aria-label="Diary page 14">
+              <span class="work-figure">
+                <img src="assets/diary/diary-014.jpg" alt="Diary page 14" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 014 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 014 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="15" data-od-id="dy-card-015" aria-label="Diary page 15">
+              <span class="work-figure">
+                <img src="assets/diary/diary-015.jpg" alt="Diary page 15" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 015 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 015 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="16" data-od-id="dy-card-016" aria-label="Diary page 16">
+              <span class="work-figure">
+                <img src="assets/diary/diary-016.jpg" alt="Diary page 16" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 016 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 016 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="17" data-od-id="dy-card-017" aria-label="Diary page 17">
+              <span class="work-figure">
+                <img src="assets/diary/diary-017.jpg" alt="Diary page 17" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 017 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 017 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="18" data-od-id="dy-card-018" aria-label="Diary page 18">
+              <span class="work-figure">
+                <img src="assets/diary/diary-018.jpg" alt="Diary page 18" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 018 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 018 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="19" data-od-id="dy-card-019" aria-label="Diary page 19">
+              <span class="work-figure">
+                <img src="assets/diary/diary-019.jpg" alt="Diary page 19" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 019 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 019 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="20" data-od-id="dy-card-020" aria-label="Diary page 20">
+              <span class="work-figure">
+                <img src="assets/diary/diary-020.jpg" alt="Diary page 20" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 020 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 020 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="21" data-od-id="dy-card-021" aria-label="Diary page 21">
+              <span class="work-figure">
+                <img src="assets/diary/diary-021.jpg" alt="Diary page 21" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 021 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 021 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="22" data-od-id="dy-card-022" aria-label="Diary page 22">
+              <span class="work-figure">
+                <img src="assets/diary/diary-022.jpg" alt="Diary page 22" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 022 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 022 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="23" data-od-id="dy-card-023" aria-label="Diary page 23">
+              <span class="work-figure">
+                <img src="assets/diary/diary-023.jpg" alt="Diary page 23" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 023 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 023 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="24" data-od-id="dy-card-024" aria-label="Diary page 24">
+              <span class="work-figure">
+                <img src="assets/diary/diary-024.jpg" alt="Diary page 24" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 024 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 024 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="25" data-od-id="dy-card-025" aria-label="Diary page 25">
+              <span class="work-figure">
+                <img src="assets/diary/diary-025.jpg" alt="Diary page 25" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 025 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 025 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="26" data-od-id="dy-card-026" aria-label="Diary page 26">
+              <span class="work-figure">
+                <img src="assets/diary/diary-026.jpg" alt="Diary page 26" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 026 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 026 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="27" data-od-id="dy-card-027" aria-label="Diary page 27">
+              <span class="work-figure">
+                <img src="assets/diary/diary-027.jpg" alt="Diary page 27" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 027 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 027 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="28" data-od-id="dy-card-028" aria-label="Diary page 28">
+              <span class="work-figure">
+                <img src="assets/diary/diary-028.jpg" alt="Diary page 28" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 028 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 028 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="29" data-od-id="dy-card-029" aria-label="Diary page 29">
+              <span class="work-figure">
+                <img src="assets/diary/diary-029.jpg" alt="Diary page 29" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 029 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 029 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="30" data-od-id="dy-card-030" aria-label="Diary page 30">
+              <span class="work-figure">
+                <img src="assets/diary/diary-030.jpg" alt="Diary page 30" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 030 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 030 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="31" data-od-id="dy-card-031" aria-label="Diary page 31">
+              <span class="work-figure">
+                <img src="assets/diary/diary-031.jpg" alt="Diary page 31" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 031 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 031 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="32" data-od-id="dy-card-032" aria-label="Diary page 32">
+              <span class="work-figure">
+                <img src="assets/diary/diary-032.jpg" alt="Diary page 32" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 032 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 032 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="33" data-od-id="dy-card-033" aria-label="Diary page 33">
+              <span class="work-figure">
+                <img src="assets/diary/diary-033.jpg" alt="Diary page 33" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 033 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 033 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="34" data-od-id="dy-card-034" aria-label="Diary page 34">
+              <span class="work-figure">
+                <img src="assets/diary/diary-034.jpg" alt="Diary page 34" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 034 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 034 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="35" data-od-id="dy-card-035" aria-label="Diary page 35">
+              <span class="work-figure">
+                <img src="assets/diary/diary-035.jpg" alt="Diary page 35" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 035 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 035 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="36" data-od-id="dy-card-036" aria-label="Diary page 36">
+              <span class="work-figure">
+                <img src="assets/diary/diary-036.jpg" alt="Diary page 36" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 036 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 036 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="37" data-od-id="dy-card-037" aria-label="Diary page 37">
+              <span class="work-figure">
+                <img src="assets/diary/diary-037.jpg" alt="Diary page 37" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 037 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 037 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="38" data-od-id="dy-card-038" aria-label="Diary page 38">
+              <span class="work-figure">
+                <img src="assets/diary/diary-038.jpg" alt="Diary page 38" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 038 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 038 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="39" data-od-id="dy-card-039" aria-label="Diary page 39">
+              <span class="work-figure">
+                <img src="assets/diary/diary-039.jpg" alt="Diary page 39" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 039 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 039 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="40" data-od-id="dy-card-040" aria-label="Diary page 40">
+              <span class="work-figure">
+                <img src="assets/diary/diary-040.jpg" alt="Diary page 40" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 040 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 040 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="41" data-od-id="dy-card-041" aria-label="Diary page 41">
+              <span class="work-figure">
+                <img src="assets/diary/diary-041.jpg" alt="Diary page 41" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 041 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 041 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="42" data-od-id="dy-card-042" aria-label="Diary page 42">
+              <span class="work-figure">
+                <img src="assets/diary/diary-042.jpg" alt="Diary page 42" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 042 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 042 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="43" data-od-id="dy-card-043" aria-label="Diary page 43">
+              <span class="work-figure">
+                <img src="assets/diary/diary-043.jpg" alt="Diary page 43" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 043 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 043 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="44" data-od-id="dy-card-044" aria-label="Diary page 44">
+              <span class="work-figure">
+                <img src="assets/diary/diary-044.jpg" alt="Diary page 44" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 044 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 044 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="45" data-od-id="dy-card-045" aria-label="Diary page 45">
+              <span class="work-figure">
+                <img src="assets/diary/diary-045.jpg" alt="Diary page 45" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 045 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 045 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="46" data-od-id="dy-card-046" aria-label="Diary page 46">
+              <span class="work-figure">
+                <img src="assets/diary/diary-046.jpg" alt="Diary page 46" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 046 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 046 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="47" data-od-id="dy-card-047" aria-label="Diary page 47">
+              <span class="work-figure">
+                <img src="assets/diary/diary-047.jpg" alt="Diary page 47" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 047 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 047 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="48" data-od-id="dy-card-048" aria-label="Diary page 48">
+              <span class="work-figure">
+                <img src="assets/diary/diary-048.jpg" alt="Diary page 48" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 048 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 048 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="49" data-od-id="dy-card-049" aria-label="Diary page 49">
+              <span class="work-figure">
+                <img src="assets/diary/diary-049.jpg" alt="Diary page 49" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 049 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 049 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="50" data-od-id="dy-card-050" aria-label="Diary page 50">
+              <span class="work-figure">
+                <img src="assets/diary/diary-050.jpg" alt="Diary page 50" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 050 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 050 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="51" data-od-id="dy-card-051" aria-label="Diary page 51">
+              <span class="work-figure">
+                <img src="assets/diary/diary-051.jpg" alt="Diary page 51" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 051 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 051 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="52" data-od-id="dy-card-052" aria-label="Diary page 52">
+              <span class="work-figure">
+                <img src="assets/diary/diary-052.jpg" alt="Diary page 52" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 052 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 052 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="53" data-od-id="dy-card-053" aria-label="Diary page 53">
+              <span class="work-figure">
+                <img src="assets/diary/diary-053.jpg" alt="Diary page 53" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 053 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 053 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="54" data-od-id="dy-card-054" aria-label="Diary page 54">
+              <span class="work-figure">
+                <img src="assets/diary/diary-054.jpg" alt="Diary page 54" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 054 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 054 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="55" data-od-id="dy-card-055" aria-label="Diary page 55">
+              <span class="work-figure">
+                <img src="assets/diary/diary-055.jpg" alt="Diary page 55" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 055 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 055 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="56" data-od-id="dy-card-056" aria-label="Diary page 56">
+              <span class="work-figure">
+                <img src="assets/diary/diary-056.jpg" alt="Diary page 56" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 056 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 056 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="57" data-od-id="dy-card-057" aria-label="Diary page 57">
+              <span class="work-figure">
+                <img src="assets/diary/diary-057.jpg" alt="Diary page 57" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 057 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 057 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="58" data-od-id="dy-card-058" aria-label="Diary page 58">
+              <span class="work-figure">
+                <img src="assets/diary/diary-058.jpg" alt="Diary page 58" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 058 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 058 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="59" data-od-id="dy-card-059" aria-label="Diary page 59">
+              <span class="work-figure">
+                <img src="assets/diary/diary-059.jpg" alt="Diary page 59" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 059 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 059 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="60" data-od-id="dy-card-060" aria-label="Diary page 60">
+              <span class="work-figure">
+                <img src="assets/diary/diary-060.jpg" alt="Diary page 60" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 060 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 060 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="61" data-od-id="dy-card-061" aria-label="Diary page 61">
+              <span class="work-figure">
+                <img src="assets/diary/diary-061.jpg" alt="Diary page 61" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 061 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 061 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="62" data-od-id="dy-card-062" aria-label="Diary page 62">
+              <span class="work-figure">
+                <img src="assets/diary/diary-062.jpg" alt="Diary page 62" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 062 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 062 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="63" data-od-id="dy-card-063" aria-label="Diary page 63">
+              <span class="work-figure">
+                <img src="assets/diary/diary-063.jpg" alt="Diary page 63" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 063 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 063 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="64" data-od-id="dy-card-064" aria-label="Diary page 64">
+              <span class="work-figure">
+                <img src="assets/diary/diary-064.jpg" alt="Diary page 64" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 064 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 064 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="65" data-od-id="dy-card-065" aria-label="Diary page 65">
+              <span class="work-figure">
+                <img src="assets/diary/diary-065.jpg" alt="Diary page 65" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 065 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 065 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="66" data-od-id="dy-card-066" aria-label="Diary page 66">
+              <span class="work-figure">
+                <img src="assets/diary/diary-066.jpg" alt="Diary page 66" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 066 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 066 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="67" data-od-id="dy-card-067" aria-label="Diary page 67">
+              <span class="work-figure">
+                <img src="assets/diary/diary-067.jpg" alt="Diary page 67" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 067 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 067 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="68" data-od-id="dy-card-068" aria-label="Diary page 68">
+              <span class="work-figure">
+                <img src="assets/diary/diary-068.jpg" alt="Diary page 68" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 068 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 068 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="69" data-od-id="dy-card-069" aria-label="Diary page 69">
+              <span class="work-figure">
+                <img src="assets/diary/diary-069.jpg" alt="Diary page 69" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 069 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 069 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="70" data-od-id="dy-card-070" aria-label="Diary page 70">
+              <span class="work-figure">
+                <img src="assets/diary/diary-070.jpg" alt="Diary page 70" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 070 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 070 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="71" data-od-id="dy-card-071" aria-label="Diary page 71">
+              <span class="work-figure">
+                <img src="assets/diary/diary-071.jpg" alt="Diary page 71" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 071 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 071 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="72" data-od-id="dy-card-072" aria-label="Diary page 72">
+              <span class="work-figure">
+                <img src="assets/diary/diary-072.jpg" alt="Diary page 72" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 072 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 072 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="73" data-od-id="dy-card-073" aria-label="Diary page 73">
+              <span class="work-figure">
+                <img src="assets/diary/diary-073.jpg" alt="Diary page 73" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 073 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 073 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="74" data-od-id="dy-card-074" aria-label="Diary page 74">
+              <span class="work-figure">
+                <img src="assets/diary/diary-074.jpg" alt="Diary page 74" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 074 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 074 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="75" data-od-id="dy-card-075" aria-label="Diary page 75">
+              <span class="work-figure">
+                <img src="assets/diary/diary-075.jpg" alt="Diary page 75" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 075 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 075 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="76" data-od-id="dy-card-076" aria-label="Diary page 76">
+              <span class="work-figure">
+                <img src="assets/diary/diary-076.jpg" alt="Diary page 76" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 076 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 076 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="77" data-od-id="dy-card-077" aria-label="Diary page 77">
+              <span class="work-figure">
+                <img src="assets/diary/diary-077.jpg" alt="Diary page 77" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 077 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 077 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="78" data-od-id="dy-card-078" aria-label="Diary page 78">
+              <span class="work-figure">
+                <img src="assets/diary/diary-078.jpg" alt="Diary page 78" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 078 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 078 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="79" data-od-id="dy-card-079" aria-label="Diary page 79">
+              <span class="work-figure">
+                <img src="assets/diary/diary-079.jpg" alt="Diary page 79" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 079 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 079 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="80" data-od-id="dy-card-080" aria-label="Diary page 80">
+              <span class="work-figure">
+                <img src="assets/diary/diary-080.jpg" alt="Diary page 80" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 080 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 080 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="81" data-od-id="dy-card-081" aria-label="Diary page 81">
+              <span class="work-figure">
+                <img src="assets/diary/diary-081.jpg" alt="Diary page 81" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 081 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 081 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="82" data-od-id="dy-card-082" aria-label="Diary page 82">
+              <span class="work-figure">
+                <img src="assets/diary/diary-082.jpg" alt="Diary page 82" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 082 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 082 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="83" data-od-id="dy-card-083" aria-label="Diary page 83">
+              <span class="work-figure">
+                <img src="assets/diary/diary-083.jpg" alt="Diary page 83" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 083 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 083 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="84" data-od-id="dy-card-084" aria-label="Diary page 84">
+              <span class="work-figure">
+                <img src="assets/diary/diary-084.jpg" alt="Diary page 84" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 084 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 084 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="85" data-od-id="dy-card-085" aria-label="Diary page 85">
+              <span class="work-figure">
+                <img src="assets/diary/diary-085.jpg" alt="Diary page 85" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 085 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 085 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="86" data-od-id="dy-card-086" aria-label="Diary page 86">
+              <span class="work-figure">
+                <img src="assets/diary/diary-086.jpg" alt="Diary page 86" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 086 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 086 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="87" data-od-id="dy-card-087" aria-label="Diary page 87">
+              <span class="work-figure">
+                <img src="assets/diary/diary-087.jpg" alt="Diary page 87" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 087 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 087 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="88" data-od-id="dy-card-088" aria-label="Diary page 88">
+              <span class="work-figure">
+                <img src="assets/diary/diary-088.jpg" alt="Diary page 88" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 088 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 088 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="89" data-od-id="dy-card-089" aria-label="Diary page 89">
+              <span class="work-figure">
+                <img src="assets/diary/diary-089.jpg" alt="Diary page 89" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 089 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 089 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="90" data-od-id="dy-card-090" aria-label="Diary page 90">
+              <span class="work-figure">
+                <img src="assets/diary/diary-090.jpg" alt="Diary page 90" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 090 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 090 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="91" data-od-id="dy-card-091" aria-label="Diary page 91">
+              <span class="work-figure">
+                <img src="assets/diary/diary-091.jpg" alt="Diary page 91" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 091 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 091 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="92" data-od-id="dy-card-092" aria-label="Diary page 92">
+              <span class="work-figure">
+                <img src="assets/diary/diary-092.jpg" alt="Diary page 92" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 092 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 092 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="93" data-od-id="dy-card-093" aria-label="Diary page 93">
+              <span class="work-figure">
+                <img src="assets/diary/diary-093.jpg" alt="Diary page 93" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 093 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 093 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="94" data-od-id="dy-card-094" aria-label="Diary page 94">
+              <span class="work-figure">
+                <img src="assets/diary/diary-094.jpg" alt="Diary page 94" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 094 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 094 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="95" data-od-id="dy-card-095" aria-label="Diary page 95">
+              <span class="work-figure">
+                <img src="assets/diary/diary-095.jpg" alt="Diary page 95" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 095 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 095 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="96" data-od-id="dy-card-096" aria-label="Diary page 96">
+              <span class="work-figure">
+                <img src="assets/diary/diary-096.jpg" alt="Diary page 96" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 096 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 096 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="97" data-od-id="dy-card-097" aria-label="Diary page 97">
+              <span class="work-figure">
+                <img src="assets/diary/diary-097.jpg" alt="Diary page 97" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 097 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 097 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="98" data-od-id="dy-card-098" aria-label="Diary page 98">
+              <span class="work-figure">
+                <img src="assets/diary/diary-098.jpg" alt="Diary page 98" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 098 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 098 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="99" data-od-id="dy-card-099" aria-label="Diary page 99">
+              <span class="work-figure">
+                <img src="assets/diary/diary-099.jpg" alt="Diary page 99" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 099 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 099 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="100" data-od-id="dy-card-100" aria-label="Diary page 100">
+              <span class="work-figure">
+                <img src="assets/diary/diary-100.jpg" alt="Diary page 100" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 100 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 100 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="101" data-od-id="dy-card-101" aria-label="Diary page 101">
+              <span class="work-figure">
+                <img src="assets/diary/diary-101.jpg" alt="Diary page 101" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 101 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 101 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="102" data-od-id="dy-card-102" aria-label="Diary page 102">
+              <span class="work-figure">
+                <img src="assets/diary/diary-102.jpg" alt="Diary page 102" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 102 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 102 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="103" data-od-id="dy-card-103" aria-label="Diary page 103">
+              <span class="work-figure">
+                <img src="assets/diary/diary-103.jpg" alt="Diary page 103" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 103 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 103 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="104" data-od-id="dy-card-104" aria-label="Diary page 104">
+              <span class="work-figure">
+                <img src="assets/diary/diary-104.jpg" alt="Diary page 104" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 104 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 104 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="105" data-od-id="dy-card-105" aria-label="Diary page 105">
+              <span class="work-figure">
+                <img src="assets/diary/diary-105.jpg" alt="Diary page 105" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 105 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 105 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="106" data-od-id="dy-card-106" aria-label="Diary page 106">
+              <span class="work-figure">
+                <img src="assets/diary/diary-106.jpg" alt="Diary page 106" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 106 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 106 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="107" data-od-id="dy-card-107" aria-label="Diary page 107">
+              <span class="work-figure">
+                <img src="assets/diary/diary-107.jpg" alt="Diary page 107" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 107 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 107 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="108" data-od-id="dy-card-108" aria-label="Diary page 108">
+              <span class="work-figure">
+                <img src="assets/diary/diary-108.jpg" alt="Diary page 108" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 108 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 108 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="109" data-od-id="dy-card-109" aria-label="Diary page 109">
+              <span class="work-figure">
+                <img src="assets/diary/diary-109.jpg" alt="Diary page 109" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 109 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 109 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="110" data-od-id="dy-card-110" aria-label="Diary page 110">
+              <span class="work-figure">
+                <img src="assets/diary/diary-110.jpg" alt="Diary page 110" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 110 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 110 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="111" data-od-id="dy-card-111" aria-label="Diary page 111">
+              <span class="work-figure">
+                <img src="assets/diary/diary-111.jpg" alt="Diary page 111" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 111 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 111 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="112" data-od-id="dy-card-112" aria-label="Diary page 112">
+              <span class="work-figure">
+                <img src="assets/diary/diary-112.jpg" alt="Diary page 112" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 112 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 112 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="113" data-od-id="dy-card-113" aria-label="Diary page 113">
+              <span class="work-figure">
+                <img src="assets/diary/diary-113.jpg" alt="Diary page 113" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 113 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 113 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="114" data-od-id="dy-card-114" aria-label="Diary page 114">
+              <span class="work-figure">
+                <img src="assets/diary/diary-114.jpg" alt="Diary page 114" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 114 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 114 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="115" data-od-id="dy-card-115" aria-label="Diary page 115">
+              <span class="work-figure">
+                <img src="assets/diary/diary-115.jpg" alt="Diary page 115" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 115 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 115 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="116" data-od-id="dy-card-116" aria-label="Diary page 116">
+              <span class="work-figure">
+                <img src="assets/diary/diary-116.jpg" alt="Diary page 116" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 116 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 116 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="117" data-od-id="dy-card-117" aria-label="Diary page 117">
+              <span class="work-figure">
+                <img src="assets/diary/diary-117.jpg" alt="Diary page 117" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 117 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 117 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="118" data-od-id="dy-card-118" aria-label="Diary page 118">
+              <span class="work-figure">
+                <img src="assets/diary/diary-118.jpg" alt="Diary page 118" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 118 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 118 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="119" data-od-id="dy-card-119" aria-label="Diary page 119">
+              <span class="work-figure">
+                <img src="assets/diary/diary-119.jpg" alt="Diary page 119" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 119 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 119 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="120" data-od-id="dy-card-120" aria-label="Diary page 120">
+              <span class="work-figure">
+                <img src="assets/diary/diary-120.jpg" alt="Diary page 120" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 120 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 120 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="121" data-od-id="dy-card-121" aria-label="Diary page 121">
+              <span class="work-figure">
+                <img src="assets/diary/diary-121.jpg" alt="Diary page 121" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 121 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 121 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="122" data-od-id="dy-card-122" aria-label="Diary page 122">
+              <span class="work-figure">
+                <img src="assets/diary/diary-122.jpg" alt="Diary page 122" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 122 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 122 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="123" data-od-id="dy-card-123" aria-label="Diary page 123">
+              <span class="work-figure">
+                <img src="assets/diary/diary-123.jpg" alt="Diary page 123" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 123 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 123 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="124" data-od-id="dy-card-124" aria-label="Diary page 124">
+              <span class="work-figure">
+                <img src="assets/diary/diary-124.jpg" alt="Diary page 124" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 124 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 124 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="125" data-od-id="dy-card-125" aria-label="Diary page 125">
+              <span class="work-figure">
+                <img src="assets/diary/diary-125.jpg" alt="Diary page 125" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 125 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 125 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="126" data-od-id="dy-card-126" aria-label="Diary page 126">
+              <span class="work-figure">
+                <img src="assets/diary/diary-126.jpg" alt="Diary page 126" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 126 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 126 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="127" data-od-id="dy-card-127" aria-label="Diary page 127">
+              <span class="work-figure">
+                <img src="assets/diary/diary-127.jpg" alt="Diary page 127" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 127 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 127 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="128" data-od-id="dy-card-128" aria-label="Diary page 128">
+              <span class="work-figure">
+                <img src="assets/diary/diary-128.jpg" alt="Diary page 128" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 128 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 128 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="129" data-od-id="dy-card-129" aria-label="Diary page 129">
+              <span class="work-figure">
+                <img src="assets/diary/diary-129.jpg" alt="Diary page 129" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 129 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 129 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="130" data-od-id="dy-card-130" aria-label="Diary page 130">
+              <span class="work-figure">
+                <img src="assets/diary/diary-130.jpg" alt="Diary page 130" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 130 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 130 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="131" data-od-id="dy-card-131" aria-label="Diary page 131">
+              <span class="work-figure">
+                <img src="assets/diary/diary-131.jpg" alt="Diary page 131" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 131 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 131 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="132" data-od-id="dy-card-132" aria-label="Diary page 132">
+              <span class="work-figure">
+                <img src="assets/diary/diary-132.jpg" alt="Diary page 132" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 132 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 132 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="133" data-od-id="dy-card-133" aria-label="Diary page 133">
+              <span class="work-figure">
+                <img src="assets/diary/diary-133.jpg" alt="Diary page 133" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 133 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 133 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="134" data-od-id="dy-card-134" aria-label="Diary page 134">
+              <span class="work-figure">
+                <img src="assets/diary/diary-134.jpg" alt="Diary page 134" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 134 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 134 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="135" data-od-id="dy-card-135" aria-label="Diary page 135">
+              <span class="work-figure">
+                <img src="assets/diary/diary-135.jpg" alt="Diary page 135" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 135 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 135 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="136" data-od-id="dy-card-136" aria-label="Diary page 136">
+              <span class="work-figure">
+                <img src="assets/diary/diary-136.jpg" alt="Diary page 136" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 136 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 136 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="137" data-od-id="dy-card-137" aria-label="Diary page 137">
+              <span class="work-figure">
+                <img src="assets/diary/diary-137.jpg" alt="Diary page 137" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 137 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 137 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="138" data-od-id="dy-card-138" aria-label="Diary page 138">
+              <span class="work-figure">
+                <img src="assets/diary/diary-138.jpg" alt="Diary page 138" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 138 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 138 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="139" data-od-id="dy-card-139" aria-label="Diary page 139">
+              <span class="work-figure">
+                <img src="assets/diary/diary-139.jpg" alt="Diary page 139" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 139 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 139 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="140" data-od-id="dy-card-140" aria-label="Diary page 140">
+              <span class="work-figure">
+                <img src="assets/diary/diary-140.jpg" alt="Diary page 140" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 140 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 140 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="141" data-od-id="dy-card-141" aria-label="Diary page 141">
+              <span class="work-figure">
+                <img src="assets/diary/diary-141.jpg" alt="Diary page 141" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 141 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 141 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="142" data-od-id="dy-card-142" aria-label="Diary page 142">
+              <span class="work-figure">
+                <img src="assets/diary/diary-142.jpg" alt="Diary page 142" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 142 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 142 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="143" data-od-id="dy-card-143" aria-label="Diary page 143">
+              <span class="work-figure">
+                <img src="assets/diary/diary-143.jpg" alt="Diary page 143" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 143 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 143 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="144" data-od-id="dy-card-144" aria-label="Diary page 144">
+              <span class="work-figure">
+                <img src="assets/diary/diary-144.jpg" alt="Diary page 144" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 144 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 144 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="145" data-od-id="dy-card-145" aria-label="Diary page 145">
+              <span class="work-figure">
+                <img src="assets/diary/diary-145.jpg" alt="Diary page 145" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 145 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 145 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="146" data-od-id="dy-card-146" aria-label="Diary page 146">
+              <span class="work-figure">
+                <img src="assets/diary/diary-146.jpg" alt="Diary page 146" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 146 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 146 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="147" data-od-id="dy-card-147" aria-label="Diary page 147">
+              <span class="work-figure">
+                <img src="assets/diary/diary-147.jpg" alt="Diary page 147" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 147 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 147 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="148" data-od-id="dy-card-148" aria-label="Diary page 148">
+              <span class="work-figure">
+                <img src="assets/diary/diary-148.jpg" alt="Diary page 148" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 148 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 148 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="149" data-od-id="dy-card-149" aria-label="Diary page 149">
+              <span class="work-figure">
+                <img src="assets/diary/diary-149.jpg" alt="Diary page 149" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 149 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 149 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="150" data-od-id="dy-card-150" aria-label="Diary page 150">
+              <span class="work-figure">
+                <img src="assets/diary/diary-150.jpg" alt="Diary page 150" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 150 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 150 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="151" data-od-id="dy-card-151" aria-label="Diary page 151">
+              <span class="work-figure">
+                <img src="assets/diary/diary-151.jpg" alt="Diary page 151" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 151 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 151 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="152" data-od-id="dy-card-152" aria-label="Diary page 152">
+              <span class="work-figure">
+                <img src="assets/diary/diary-152.jpg" alt="Diary page 152" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 152 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 152 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="153" data-od-id="dy-card-153" aria-label="Diary page 153">
+              <span class="work-figure">
+                <img src="assets/diary/diary-153.jpg" alt="Diary page 153" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 153 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 153 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="154" data-od-id="dy-card-154" aria-label="Diary page 154">
+              <span class="work-figure">
+                <img src="assets/diary/diary-154.jpg" alt="Diary page 154" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 154 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 154 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="155" data-od-id="dy-card-155" aria-label="Diary page 155">
+              <span class="work-figure">
+                <img src="assets/diary/diary-155.jpg" alt="Diary page 155" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 155 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 155 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="156" data-od-id="dy-card-156" aria-label="Diary page 156">
+              <span class="work-figure">
+                <img src="assets/diary/diary-156.jpg" alt="Diary page 156" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 156 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 156 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="157" data-od-id="dy-card-157" aria-label="Diary page 157">
+              <span class="work-figure">
+                <img src="assets/diary/diary-157.jpg" alt="Diary page 157" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 157 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 157 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="158" data-od-id="dy-card-158" aria-label="Diary page 158">
+              <span class="work-figure">
+                <img src="assets/diary/diary-158.jpg" alt="Diary page 158" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 158 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 158 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="159" data-od-id="dy-card-159" aria-label="Diary page 159">
+              <span class="work-figure">
+                <img src="assets/diary/diary-159.jpg" alt="Diary page 159" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 159 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 159 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="160" data-od-id="dy-card-160" aria-label="Diary page 160">
+              <span class="work-figure">
+                <img src="assets/diary/diary-160.jpg" alt="Diary page 160" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 160 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 160 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="161" data-od-id="dy-card-161" aria-label="Diary page 161">
+              <span class="work-figure">
+                <img src="assets/diary/diary-161.jpg" alt="Diary page 161" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 161 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 161 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="162" data-od-id="dy-card-162" aria-label="Diary page 162">
+              <span class="work-figure">
+                <img src="assets/diary/diary-162.jpg" alt="Diary page 162" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 162 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 162 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="163" data-od-id="dy-card-163" aria-label="Diary page 163">
+              <span class="work-figure">
+                <img src="assets/diary/diary-163.jpg" alt="Diary page 163" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 163 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 163 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="164" data-od-id="dy-card-164" aria-label="Diary page 164">
+              <span class="work-figure">
+                <img src="assets/diary/diary-164.jpg" alt="Diary page 164" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 164 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 164 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="165" data-od-id="dy-card-165" aria-label="Diary page 165">
+              <span class="work-figure">
+                <img src="assets/diary/diary-165.jpg" alt="Diary page 165" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 165 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 165 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="166" data-od-id="dy-card-166" aria-label="Diary page 166">
+              <span class="work-figure">
+                <img src="assets/diary/diary-166.jpg" alt="Diary page 166" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 166 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 166 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="167" data-od-id="dy-card-167" aria-label="Diary page 167">
+              <span class="work-figure">
+                <img src="assets/diary/diary-167.jpg" alt="Diary page 167" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 167 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 167 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="168" data-od-id="dy-card-168" aria-label="Diary page 168">
+              <span class="work-figure">
+                <img src="assets/diary/diary-168.jpg" alt="Diary page 168" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 168 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 168 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="169" data-od-id="dy-card-169" aria-label="Diary page 169">
+              <span class="work-figure">
+                <img src="assets/diary/diary-169.jpg" alt="Diary page 169" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 169 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 169 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="170" data-od-id="dy-card-170" aria-label="Diary page 170">
+              <span class="work-figure">
+                <img src="assets/diary/diary-170.jpg" alt="Diary page 170" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 170 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 170 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="171" data-od-id="dy-card-171" aria-label="Diary page 171">
+              <span class="work-figure">
+                <img src="assets/diary/diary-171.jpg" alt="Diary page 171" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 171 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 171 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="172" data-od-id="dy-card-172" aria-label="Diary page 172">
+              <span class="work-figure">
+                <img src="assets/diary/diary-172.jpg" alt="Diary page 172" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 172 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 172 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="173" data-od-id="dy-card-173" aria-label="Diary page 173">
+              <span class="work-figure">
+                <img src="assets/diary/diary-173.jpg" alt="Diary page 173" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 173 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 173 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="174" data-od-id="dy-card-174" aria-label="Diary page 174">
+              <span class="work-figure">
+                <img src="assets/diary/diary-174.jpg" alt="Diary page 174" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 174 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 174 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="175" data-od-id="dy-card-175" aria-label="Diary page 175">
+              <span class="work-figure">
+                <img src="assets/diary/diary-175.jpg" alt="Diary page 175" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 175 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 175 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="176" data-od-id="dy-card-176" aria-label="Diary page 176">
+              <span class="work-figure">
+                <img src="assets/diary/diary-176.jpg" alt="Diary page 176" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 176 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 176 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="177" data-od-id="dy-card-177" aria-label="Diary page 177">
+              <span class="work-figure">
+                <img src="assets/diary/diary-177.jpg" alt="Diary page 177" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 177 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 177 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="178" data-od-id="dy-card-178" aria-label="Diary page 178">
+              <span class="work-figure">
+                <img src="assets/diary/diary-178.jpg" alt="Diary page 178" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 178 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 178 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="179" data-od-id="dy-card-179" aria-label="Diary page 179">
+              <span class="work-figure">
+                <img src="assets/diary/diary-179.jpg" alt="Diary page 179" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 179 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 179 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="180" data-od-id="dy-card-180" aria-label="Diary page 180">
+              <span class="work-figure">
+                <img src="assets/diary/diary-180.jpg" alt="Diary page 180" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 180 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 180 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="181" data-od-id="dy-card-181" aria-label="Diary page 181">
+              <span class="work-figure">
+                <img src="assets/diary/diary-181.jpg" alt="Diary page 181" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 181 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 181 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="182" data-od-id="dy-card-182" aria-label="Diary page 182">
+              <span class="work-figure">
+                <img src="assets/diary/diary-182.jpg" alt="Diary page 182" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 182 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 182 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="183" data-od-id="dy-card-183" aria-label="Diary page 183">
+              <span class="work-figure">
+                <img src="assets/diary/diary-183.jpg" alt="Diary page 183" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 183 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 183 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="184" data-od-id="dy-card-184" aria-label="Diary page 184">
+              <span class="work-figure">
+                <img src="assets/diary/diary-184.jpg" alt="Diary page 184" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 184 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 184 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="185" data-od-id="dy-card-185" aria-label="Diary page 185">
+              <span class="work-figure">
+                <img src="assets/diary/diary-185.jpg" alt="Diary page 185" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 185 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 185 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="186" data-od-id="dy-card-186" aria-label="Diary page 186">
+              <span class="work-figure">
+                <img src="assets/diary/diary-186.jpg" alt="Diary page 186" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 186 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 186 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="187" data-od-id="dy-card-187" aria-label="Diary page 187">
+              <span class="work-figure">
+                <img src="assets/diary/diary-187.jpg" alt="Diary page 187" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 187 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 187 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="188" data-od-id="dy-card-188" aria-label="Diary page 188">
+              <span class="work-figure">
+                <img src="assets/diary/diary-188.jpg" alt="Diary page 188" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 188 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 188 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="189" data-od-id="dy-card-189" aria-label="Diary page 189">
+              <span class="work-figure">
+                <img src="assets/diary/diary-189.jpg" alt="Diary page 189" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 189 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 189 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="190" data-od-id="dy-card-190" aria-label="Diary page 190">
+              <span class="work-figure">
+                <img src="assets/diary/diary-190.jpg" alt="Diary page 190" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 190 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 190 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="191" data-od-id="dy-card-191" aria-label="Diary page 191">
+              <span class="work-figure">
+                <img src="assets/diary/diary-191.jpg" alt="Diary page 191" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 191 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 191 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="192" data-od-id="dy-card-192" aria-label="Diary page 192">
+              <span class="work-figure">
+                <img src="assets/diary/diary-192.jpg" alt="Diary page 192" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 192 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 192 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="193" data-od-id="dy-card-193" aria-label="Diary page 193">
+              <span class="work-figure">
+                <img src="assets/diary/diary-193.jpg" alt="Diary page 193" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 193 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 193 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="194" data-od-id="dy-card-194" aria-label="Diary page 194">
+              <span class="work-figure">
+                <img src="assets/diary/diary-194.jpg" alt="Diary page 194" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 194 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 194 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="195" data-od-id="dy-card-195" aria-label="Diary page 195">
+              <span class="work-figure">
+                <img src="assets/diary/diary-195.jpg" alt="Diary page 195" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 195 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 195 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="196" data-od-id="dy-card-196" aria-label="Diary page 196">
+              <span class="work-figure">
+                <img src="assets/diary/diary-196.jpg" alt="Diary page 196" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 196 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 196 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="197" data-od-id="dy-card-197" aria-label="Diary page 197">
+              <span class="work-figure">
+                <img src="assets/diary/diary-197.jpg" alt="Diary page 197" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 197 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 197 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="198" data-od-id="dy-card-198" aria-label="Diary page 198">
+              <span class="work-figure">
+                <img src="assets/diary/diary-198.jpg" alt="Diary page 198" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 198 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 198 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="199" data-od-id="dy-card-199" aria-label="Diary page 199">
+              <span class="work-figure">
+                <img src="assets/diary/diary-199.jpg" alt="Diary page 199" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 199 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 199 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="200" data-od-id="dy-card-200" aria-label="Diary page 200">
+              <span class="work-figure">
+                <img src="assets/diary/diary-200.jpg" alt="Diary page 200" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 200 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 200 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="201" data-od-id="dy-card-201" aria-label="Diary page 201">
+              <span class="work-figure">
+                <img src="assets/diary/diary-201.jpg" alt="Diary page 201" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 201 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 201 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="202" data-od-id="dy-card-202" aria-label="Diary page 202">
+              <span class="work-figure">
+                <img src="assets/diary/diary-202.jpg" alt="Diary page 202" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 202 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 202 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="203" data-od-id="dy-card-203" aria-label="Diary page 203">
+              <span class="work-figure">
+                <img src="assets/diary/diary-203.jpg" alt="Diary page 203" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 203 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 203 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="204" data-od-id="dy-card-204" aria-label="Diary page 204">
+              <span class="work-figure">
+                <img src="assets/diary/diary-204.jpg" alt="Diary page 204" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 204 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 204 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="205" data-od-id="dy-card-205" aria-label="Diary page 205">
+              <span class="work-figure">
+                <img src="assets/diary/diary-205.jpg" alt="Diary page 205" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 205 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 205 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="206" data-od-id="dy-card-206" aria-label="Diary page 206">
+              <span class="work-figure">
+                <img src="assets/diary/diary-206.jpg" alt="Diary page 206" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 206 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 206 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="207" data-od-id="dy-card-207" aria-label="Diary page 207">
+              <span class="work-figure">
+                <img src="assets/diary/diary-207.jpg" alt="Diary page 207" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 207 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 207 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="208" data-od-id="dy-card-208" aria-label="Diary page 208">
+              <span class="work-figure">
+                <img src="assets/diary/diary-208.jpg" alt="Diary page 208" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 208 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 208 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="209" data-od-id="dy-card-209" aria-label="Diary page 209">
+              <span class="work-figure">
+                <img src="assets/diary/diary-209.jpg" alt="Diary page 209" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 209 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 209 / 210</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-n="210" data-od-id="dy-card-210" aria-label="Diary page 210">
+              <span class="work-figure">
+                <img src="assets/diary/diary-210.jpg" alt="Diary page 210" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">Page 210 / 210</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">Page 210 / 210</span></span>
+            </button>
+          </li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <div class="fs" id="fs" data-od-id="diary-lightbox" role="dialog" aria-modal="true" aria-label="Diary — fullscreen" data-i18n-aria="dy.fs.aria">
+    <img class="fs-img" id="fs-img" alt="">
+    <button class="fs-nav fs-prev" type="button" id="fs-prev" data-od-id="fs-prev" aria-label="Previous page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 5 L7 12 L18 19" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="miter"/></svg></button>
+    <button class="fs-nav fs-next" type="button" id="fs-next" data-od-id="fs-next" aria-label="Next page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5 L17 12 L6 19" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linejoin="miter"/></svg></button>
+    <button class="fs-close" type="button" id="fs-close" data-od-id="fs-close" aria-label="Close lightbox" data-i18n-aria="dy.fs.close.aria"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5 L19 19 M19 5 L5 19" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    <p class="fs-count" id="fs-count">001 / 210</p>
+  </div>
+
+  <a class="orb" id="orb" href="all-works.html" role="button" tabindex="0" aria-label="View all works" data-i18n-aria="orb.aria" data-od-id="hero-orb">
+    <svg class="dali-eye" viewBox="0 0 176 150" role="img" aria-hidden="true">
+      <g class="eye-blink">
+        <path d="M16 68 C 38 34, 118 34, 142 68 C 118 102, 38 102, 16 68 Z" fill="var(--surface)" stroke="var(--fg)" stroke-width="3.4"/>
+        <path d="M34 44 C 52 28, 96 26, 118 36 M26 52 C 40 38, 64 30, 86 34 M118 34 C 132 40, 144 50, 152 60" fill="none" stroke="var(--fg)" stroke-width="2.6" stroke-linecap="round"/>
+        <g fill="none" stroke="var(--muted)">
+          <circle cx="88" cy="68" r="22" opacity=".5"/>
+          <circle cx="88" cy="68" r="17" opacity=".32"/>
+          <circle cx="88" cy="68" r="13" opacity=".2"/>
+        </g>
+        <circle cx="88" cy="68" r="11" fill="var(--fg)"/>
+        <path d="M74 57 Q 88 46 102 57" fill="none" stroke="var(--surface)" stroke-width="3.6" stroke-linecap="round"/>
+        <path d="M28 86 C 44 106, 70 112, 88 110 M40 92 C 56 102, 72 104, 84 100" fill="none" stroke="var(--fg)" stroke-width="2.4" stroke-linecap="round"/>
+      </g>
+      <path d="M62 18 C 74 10, 92 8, 104 12" fill="none" stroke="var(--fg)" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+  </a>
+
+  <footer class="site-footer" data-od-id="site-footer">
+    <div class="shell">
+      <span>© 2026 Andreas Krings</span>
+      <a class="to-top" href="#top" data-od-id="to-top" data-i18n="footer.top">
+        <svg class="to-top-eye" viewBox="0 0 48 30" aria-hidden="true">
+      <path d="M5 15 C 12 5, 36 5, 43 15 C 36 25, 12 25, 5 15 Z" fill="none" stroke="currentColor" stroke-width="2"/>
+      <path d="M16 8 C 21 4, 27 3, 32 5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+      <circle cx="24" cy="15" r="6" fill="currentColor"/>
+    </svg><span class="to-top-arrow">Back to top ↑</span>
+      </a>
+    </div>
+  </footer>
+
+<script src="assets/i18n.js?v=3"></script>
+<script>
+  window.AK_I18N = {
+    de: {
+      'dy.kicker': '03 — Tagebuch',
+      'dy.title': 'Tagebuch',
+      'dy.intro': 'Seiten aus dem Skizzenbuch — aus dem Buch fotografiert.',
+      'dy.count': '210 Seiten',
+      'dy.fs.aria': 'Tagebuch — Vollbild',
+      'dy.fs.close.aria': 'Lichtbild schließen'
+    }
+  };
+</script>
+<script>
+
+  // ----- floating eye: drag + click -> all works -----
+  (function(){
+    const orb = document.getElementById('orb');
+    const KEY = 'ak-orb-pos';
+    const goAllWorks = () => { window.location.href = 'all-works.html'; };
+    let dragging = false, moved = false, sx = 0, sy = 0, ox = 0, oy = 0;
+    const clamp = (v, mn, mx) => Math.max(mn, Math.min(v, mx));
+    function apply(x, y){
+      const r = orb.getBoundingClientRect();
+      x = clamp(x, 8, window.innerWidth - r.width - 8);
+      y = clamp(y, 8, window.innerHeight - r.height - 8);
+      orb.style.left = x + 'px';
+      orb.style.top = y + 'px';
+      orb.style.right = 'auto';
+      orb.style.bottom = 'auto';
+    }
+    orb.addEventListener('pointerdown', (e) => {
+      if (e.button !== undefined && e.button !== 0) return;
+      const r = orb.getBoundingClientRect();
+      sx = e.clientX; sy = e.clientY; ox = r.left; oy = r.top;
+      dragging = true; moved = false;
+      orb.classList.add('dragging');
+      try { orb.setPointerCapture(e.pointerId); } catch (_) {}
+      e.preventDefault();
+    });
+    orb.addEventListener('pointermove', (e) => {
+      if (!dragging) return;
+      const dx = e.clientX - sx, dy = e.clientY - sy;
+      if (Math.abs(dx) + Math.abs(dy) > 4) moved = true;
+      apply(ox + dx, oy + dy);
+    });
+    function end(e){
+      if (!dragging) return;
+      dragging = false;
+      orb.classList.remove('dragging');
+      try { orb.releasePointerCapture(e.pointerId); } catch (_) {}
+      if (moved) {
+        try { localStorage.setItem(KEY, JSON.stringify({
+          x: parseFloat(orb.style.left) || 0, y: parseFloat(orb.style.top) || 0
+        })); } catch (_) {}
+        e.preventDefault();
+        e.stopPropagation();
+        orb.dataset.justDragged = '1';
+      }
+    }
+    orb.addEventListener('pointerup', end);
+    orb.addEventListener('pointercancel', end);
+    orb.addEventListener('click', (e) => {
+      if (orb.dataset.justDragged === '1') { delete orb.dataset.justDragged; e.preventDefault(); e.stopPropagation(); return; }
+      goAllWorks();
+    });
+    try {
+      const p = JSON.parse(localStorage.getItem(KEY) || 'null');
+      if (p && typeof p.x === 'number' && typeof p.y === 'number') apply(p.x, p.y);
+    } catch (_) {}
+    window.addEventListener('resize', () => {
+      if (!orb.style.left) return;
+      try {
+        const p = JSON.parse(localStorage.getItem(KEY) || 'null');
+        if (p) apply(p.x, p.y);
+      } catch (_) {}
+    });
+  })();
+  const orb = document.getElementById('orb');
+  orb.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = 'all-works.html'; }
+  });
+
+  document.querySelectorAll('a[href="#top"]').forEach((a) => {
+    a.addEventListener('click', (e) => { e.preventDefault(); window.scrollTo({ top: 0 }); });
+  });
+
+  const menu = document.getElementById('menu');
+  const openBtn = document.querySelector('.nav-toggle');
+  const closeBtn = document.querySelector('.menu-close');
+  function setMenu(open) {
+    menu.classList.toggle('open', open);
+    menu.setAttribute('aria-hidden', String(!open));
+    openBtn.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+  }
+  openBtn.addEventListener('click', () => setMenu(true));
+  closeBtn.addEventListener('click', () => setMenu(false));
+  menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setMenu(false)));
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  // ----- Diary lightbox viewer -----
+  const TOTAL = 210;
+  const cards = Array.from(document.querySelectorAll('.work-card[data-n]'));
+  const fs = document.getElementById('fs');
+  const fsImg = document.getElementById('fs-img');
+  const fsCount = document.getElementById('fs-count');
+  const fsPrev = document.getElementById('fs-prev');
+  const fsNext = document.getElementById('fs-next');
+  const fsClose = document.getElementById('fs-close');
+  let cur = 1, fsOpen = false;
+
+  const pad3 = (n) => String(n).padStart(3, '0');
+  const fileOf = (n) => 'assets/diary/diary-' + pad3(n) + '.jpg';
+  const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
+
+  function syncFs(){
+    fsImg.src = fileOf(cur);
+    fsImg.alt = 'Diary page ' + pad3(cur);
+    fsCount.textContent = pad3(cur) + ' / ' + pad3(TOTAL);
+  }
+  function openFs(n){
+    cur = n; fsOpen = true;
+    fs.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    syncFs();
+  }
+  function closeFs(){
+    if (!fsOpen) return;
+    fsOpen = false;
+    fs.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function go(d){
+    let n = cur + d;
+    if (n < 1) n = TOTAL;
+    if (n > TOTAL) n = 1;
+    cur = n;
+    syncFs();
+  }
+
+  cards.forEach((card) => {
+    card.addEventListener('click', (e) => { e.preventDefault(); openFs(parseInt(card.dataset.n, 10)); });
+  });
+
+  // keyboard
+  document.addEventListener('keydown', (e) => {
+    if (!fsOpen) return;
+    if (e.key === 'Escape') closeFs();
+    if (e.key === 'ArrowRight') go(1);
+    if (e.key === 'ArrowLeft') go(-1);
+  });
+
+  // touch swipe (mobile) — horizontal only, don't fight vertical scroll
+  let tX = null, tY = null;
+  fs.addEventListener('touchstart', (e) => {
+    const t = e.touches[0];
+    tX = t.clientX; tY = t.clientY;
+  }, { passive: true });
+  fs.addEventListener('touchend', (e) => {
+    if (tX === null) return;
+    const t = e.changedTouches[0];
+    const dx = t.clientX - tX;
+    const dy = t.clientY - tY;
+    tX = null; tY = null;
+    if (Math.abs(dx) > 48 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) go(1); else go(-1);
+      fs.dataset.swiped = '1';
+      setTimeout(() => { delete fs.dataset.swiped; }, 350);
+    }
+  }, { passive: true });
+
+  fsClose.addEventListener('click', (e) => { e.stopPropagation(); closeFs(); });
+  fsPrev.addEventListener('click', (e) => { e.stopPropagation(); go(-1); });
+  fsNext.addEventListener('click', (e) => { e.stopPropagation(); go(1); });
+  fs.addEventListener('click', () => {
+    if (fs.dataset.swiped === '1') return;
+    closeFs();
+  });
+
+</script>
+</body>
+</html>
