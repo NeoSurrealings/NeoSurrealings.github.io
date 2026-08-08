@@ -41,6 +41,28 @@
     'work.title.11': 'Die Treppe des Meeres',
     'work.title.12': 'Der Spiegel des Ozeans',
 
+    // work titles 13+ (added via dashboard)
+    'work.title.13': 'Unbenannt 13',
+    'work.title.14': 'Unbenannt 14',
+    'work.title.15': 'Unbenannt 15',
+    'work.title.16': 'Unbenannt 16',
+    'work.title.17': 'Unbenannt 17',
+    'work.title.18': 'Unbenannt 18',
+    'work.title.19': 'Unbenannt 19',
+    'work.title.20': 'Unbenannt 20',
+    'work.title.21': 'Unbenannt 21',
+    'work.title.22': 'Unbenannt 22',
+    'work.title.23': 'Unbenannt 23',
+    'work.title.24': 'Unbenannt 24',
+    'work.title.25': 'Unbenannt 25',
+    'work.title.26': 'Unbenannt 26',
+    'work.title.27': 'Unbenannt 27',
+    'work.title.28': 'Unbenannt 28',
+    'work.title.29': 'Unbenannt 29',
+    'work.title.30': 'Unbenannt 30',
+    'work.title.31': 'Unbenannt 31',
+    'work.title.32': 'Unbenannt 32',
+
 
 
 

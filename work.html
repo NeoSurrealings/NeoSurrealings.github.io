@@ -335,7 +335,7 @@
           <button class="nav-arrow nav-arrow--prev" type="button" id="btn-prev" data-od-id="work-prev" aria-label="Previous work" data-i18n-aria="work.prev.aria"><svg class="nav-arrow__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 5 L7 12 L18 19" stroke="currentColor" stroke-width="1.25" stroke-linejoin="miter"/></svg></button>
           <div class="w-stage">
             <div class="w-slide">
-              <img id="w-img" src="assets/work-01-the-weight-of-floating.svg" alt="The Weight of Floating — a wooden chair floating weightless above a dusk sea, a long shadow on the water">
+              <img id="w-img" src="assets/works/work-01.jpg" alt="Untitled 01">
               <img id="w-img2" alt="" aria-hidden="true">
             </div>
           </div>
@@ -421,18 +421,38 @@
 
 <script>
   const WORKS = [
-    { n: 1, file: 'assets/work-01-the-weight-of-floating.svg', title: 'The Weight of Floating', year: '2025', alt: 'The Weight of Floating — A wooden chair floats weightless above a dusk sea, its long shadow stretched across the water.', desc: 'A wooden chair floats weightless above a dusk sea, its long shadow stretched across the water.', titleDe: 'Das Gewicht des Schwebens', descDe: 'Ein hölzerner Stuhl schwebt schwerelos über einem Abendmeer, sein langer Schatten liegt auf dem Wasser.' },
-    { n: 2, file: 'assets/work-02-a-door-for-winter.svg', title: 'A Door for Winter', year: '2024', alt: 'A Door for Winter — A door propped by a crutch stands in a blue-hour snow field, light glowing through its keyhole.', desc: 'A door propped by a crutch stands in a blue-hour snow field, light glowing through its keyhole.', titleDe: 'Eine Tür für den Winter', descDe: 'Eine Tür, von einer Krücke gestützt, steht im Schneefeld der blauen Stunde; Licht glüht durch ihr Schlüsselloch.' },
-    { n: 3, file: 'assets/work-03-memory-of-a-blue-hour.svg', title: 'Memory of a Blue Hour', year: '2023', alt: 'Memory of a Blue Hour — A towering hourglass rises at dusk, its sand frozen mid-fall, ants climbing the pedestal.', desc: 'A towering hourglass rises at dusk, its sand frozen mid-fall, ants climbing the pedestal.', titleDe: 'Erinnerung an eine blaue Stunde', descDe: 'Eine mächtige Sanduhr ragt in die Dämmerung, ihr Sand ist mitten im Fall erstarrt; Ameisen klettern am Sockel.' },
-    { n: 4, file: 'assets/work-04-the-garden-that-moved-away.svg', title: 'The Garden That Moved Away', year: '2022', alt: 'The Garden That Moved Away — An open suitcase holds a miniature garden on a desert plain, a long-legged elephant crossing the distance.', desc: 'An open suitcase holds a miniature garden on a desert plain, a long-legged elephant crossing the distance.', titleDe: 'Der Garten, der fortzog', descDe: 'Ein offener Koffer hält einen Miniaturgarten auf einer Wüstenebene; ein Elefant mit langen Beinen durchquert die Ferne.' },
-    { n: 5, file: 'assets/work-05-portrait-of-an-hour.svg', title: 'Portrait of an Hour', year: '2021', alt: 'Portrait of an Hour — A classical profile dissolves into clouds and drifting clocks, a red rose at the collarbone.', desc: 'A classical profile dissolves into clouds and drifting clocks, a red rose at the collarbone.', titleDe: 'Porträt einer Stunde', descDe: 'Ein klassisches Profil löst sich in Wolken und treibende Uhren auf; eine rote Rose liegt am Schlüsselbein.' },
-    { n: 6, file: 'assets/work-06-things-the-moon-forgot.svg', title: 'Things the Moon Forgot', year: '2020', alt: 'Things the Moon Forgot — Everyday objects rest on a cratered moon with the Earth in the sky, a red balloon floating above.', desc: 'Everyday objects rest on a cratered moon with the Earth in the sky, a red balloon floating above.', titleDe: 'Was der Mond vergaß', descDe: 'Alltagsgegenstände ruhen auf einem Kratermond, darüber die Erde am Himmel; ein roter Ballon schwebt empor.' },
-    { n: 7, file: 'assets/work-07-a-room-without-corners.svg', title: 'A Room Without Corners', year: '2024', alt: 'A Room Without Corners — A round room with a single round window, a rug floating in mid-air.', desc: 'A round room with a single round window, a rug floating in mid-air.', titleDe: 'Ein Raum ohne Ecken', descDe: 'Ein runder Raum mit einem einzigen runden Fenster; ein Teppich schwebt in der Luft.' },
-    { n: 8, file: 'assets/work-08-the-clock-that-sheds-its-hours.svg', title: 'The Clock That Sheds Its Hours', year: '2019', alt: 'The Clock That Sheds Its Hours — A golden clock melts over a rock, its hours unspooling into numerals and fragments.', desc: 'A golden clock melts over a rock, its hours unspooling into numerals and fragments.', titleDe: 'Die Uhr, die ihre Stunden verliert', descDe: 'Eine goldene Uhr schmilzt über einem Felsen; ihre Stunden lösen sich in Zahlen und Bruchstücke auf.' },
-    { n: 9, file: 'assets/work-09-the-drawer-of-the-lighthouse.svg', title: 'The Drawer of the Lighthouse', year: '2018', alt: 'The Drawer of the Lighthouse — A drawer pulled from the night sky holds a working lighthouse, its beam sweeping over the dark; ants file across the brass handles.', desc: 'A drawer pulled from the night sky holds a working lighthouse, its beam sweeping over the dark; ants file across the brass handles.', titleDe: 'Die Schublade des Leuchtturms', descDe: 'Eine aus dem Nachthimmel gezogene Schublade birgt einen leuchtenden Leuchtturm; Ameisen ziehen über die Messinggriffe.' },
-    { n: 10, file: 'assets/work-10-the-rain-that-fell-upward.svg', title: 'The Rain That Fell Upward', year: '2026', alt: 'The Rain That Fell Upward — Rain rises from the desert into a floating umbrella; a man in a bowler hat watches the weather undo itself.', desc: 'Rain rises from the desert into a floating umbrella; a man in a bowler hat watches the weather undo itself.', titleDe: 'Der Regen, der nach oben fiel', descDe: 'Regen steigt von der Wüstenebene in einen schwebenden Riesenschirm; ein kleiner Mann mit Melone schaut zu.' },
-    { n: 11, file: 'assets/work-11-the-staircase-of-the-sea.svg', title: 'The Staircase of the Sea', year: '2017', alt: 'The Staircase of the Sea — A marble staircase descends into the sea, its lower steps dissolving into waves; a fish swims through the morning air.', desc: 'A marble staircase descends into the sea, its lower steps dissolving into waves; a fish swims through the morning air.', titleDe: 'Die Treppe des Meeres', descDe: 'Eine Marmortreppe steigt ins ruhige Meer hinab; ihre unteren Stufen lösen sich in Wellen auf, ein Fisch durchschwimmt die Morgenluft.' },
-    { n: 12, file: 'assets/work-12-the-mirror-of-the-ocean.svg', title: 'The Mirror of the Ocean', year: '2019', alt: 'The Mirror of the Ocean — A mirror with a melting frame reflects a storm the sea has forgotten how to have; a rose lies on the wet sand.', desc: 'A mirror with a melting frame reflects a storm the sea has forgotten how to have; a rose lies on the wet sand.', titleDe: 'Der Spiegel des Ozeans', descDe: 'Ein Spiegel mit schmelzendem Rahmen spiegelt einen Sturm, den das Meer vergessen hat; eine Rose liegt im nassen Sand.' }
+    { n: 1, file: 'assets/works/work-01.jpg', title: 'Untitled 01', year: '', alt: 'Untitled 01', desc: '', titleDe: 'Unbenannt 01', descDe: '' },
+    { n: 2, file: 'assets/works/work-02.jpg', title: 'Untitled 02', year: '', alt: 'Untitled 02', desc: '', titleDe: 'Unbenannt 02', descDe: '' },
+    { n: 3, file: 'assets/works/work-03.jpg', title: 'Untitled 03', year: '', alt: 'Untitled 03', desc: '', titleDe: 'Unbenannt 03', descDe: '' },
+    { n: 4, file: 'assets/works/work-04.jpg', title: 'Untitled 04', year: '', alt: 'Untitled 04', desc: '', titleDe: 'Unbenannt 04', descDe: '' },
+    { n: 5, file: 'assets/works/work-05.jpg', title: 'Untitled 05', year: '', alt: 'Untitled 05', desc: '', titleDe: 'Unbenannt 05', descDe: '' },
+    { n: 6, file: 'assets/works/work-06.jpg', title: 'Untitled 06', year: '', alt: 'Untitled 06', desc: '', titleDe: 'Unbenannt 06', descDe: '' },
+    { n: 7, file: 'assets/works/work-07.jpg', title: 'Untitled 07', year: '', alt: 'Untitled 07', desc: '', titleDe: 'Unbenannt 07', descDe: '' },
+    { n: 8, file: 'assets/works/work-08.jpg', title: 'Untitled 08', year: '', alt: 'Untitled 08', desc: '', titleDe: 'Unbenannt 08', descDe: '' },
+    { n: 9, file: 'assets/works/work-09.jpg', title: 'Untitled 09', year: '', alt: 'Untitled 09', desc: '', titleDe: 'Unbenannt 09', descDe: '' },
+    { n: 10, file: 'assets/works/work-10.jpg', title: 'Untitled 10', year: '', alt: 'Untitled 10', desc: '', titleDe: 'Unbenannt 10', descDe: '' },
+    { n: 11, file: 'assets/works/work-11.jpg', title: 'Untitled 11', year: '', alt: 'Untitled 11', desc: '', titleDe: 'Unbenannt 11', descDe: '' },
+    { n: 12, file: 'assets/works/work-12.jpg', title: 'Untitled 12', year: '', alt: 'Untitled 12', desc: '', titleDe: 'Unbenannt 12', descDe: '' },
+    { n: 13, file: 'assets/works/work-13.jpg', title: 'Untitled 13', year: '', alt: 'Untitled 13', desc: '', titleDe: 'Unbenannt 13', descDe: '' },
+    { n: 14, file: 'assets/works/work-14.jpg', title: 'Untitled 14', year: '', alt: 'Untitled 14', desc: '', titleDe: 'Unbenannt 14', descDe: '' },
+    { n: 15, file: 'assets/works/work-15.jpg', title: 'Untitled 15', year: '', alt: 'Untitled 15', desc: '', titleDe: 'Unbenannt 15', descDe: '' },
+    { n: 16, file: 'assets/works/work-16.jpg', title: 'Untitled 16', year: '', alt: 'Untitled 16', desc: '', titleDe: 'Unbenannt 16', descDe: '' },
+    { n: 17, file: 'assets/works/work-17.jpg', title: 'Untitled 17', year: '', alt: 'Untitled 17', desc: '', titleDe: 'Unbenannt 17', descDe: '' },
+    { n: 18, file: 'assets/works/work-18.jpg', title: 'Untitled 18', year: '', alt: 'Untitled 18', desc: '', titleDe: 'Unbenannt 18', descDe: '' },
+    { n: 19, file: 'assets/works/work-19.jpg', title: 'Untitled 19', year: '', alt: 'Untitled 19', desc: '', titleDe: 'Unbenannt 19', descDe: '' },
+    { n: 20, file: 'assets/works/work-20.jpg', title: 'Untitled 20', year: '', alt: 'Untitled 20', desc: '', titleDe: 'Unbenannt 20', descDe: '' },
+    { n: 21, file: 'assets/works/work-21.jpg', title: 'Untitled 21', year: '', alt: 'Untitled 21', desc: '', titleDe: 'Unbenannt 21', descDe: '' },
+    { n: 22, file: 'assets/works/work-22.jpg', title: 'Untitled 22', year: '', alt: 'Untitled 22', desc: '', titleDe: 'Unbenannt 22', descDe: '' },
+    { n: 23, file: 'assets/works/work-23.jpg', title: 'Untitled 23', year: '', alt: 'Untitled 23', desc: '', titleDe: 'Unbenannt 23', descDe: '' },
+    { n: 24, file: 'assets/works/work-24.jpg', title: 'Untitled 24', year: '', alt: 'Untitled 24', desc: '', titleDe: 'Unbenannt 24', descDe: '' },
+    { n: 25, file: 'assets/works/work-25.jpg', title: 'Untitled 25', year: '', alt: 'Untitled 25', desc: '', titleDe: 'Unbenannt 25', descDe: '' },
+    { n: 26, file: 'assets/works/work-26.jpg', title: 'Untitled 26', year: '', alt: 'Untitled 26', desc: '', titleDe: 'Unbenannt 26', descDe: '' },
+    { n: 27, file: 'assets/works/work-27.jpg', title: 'Untitled 27', year: '', alt: 'Untitled 27', desc: '', titleDe: 'Unbenannt 27', descDe: '' },
+    { n: 28, file: 'assets/works/work-28.jpg', title: 'Untitled 28', year: '', alt: 'Untitled 28', desc: '', titleDe: 'Unbenannt 28', descDe: '' },
+    { n: 29, file: 'assets/works/work-29.jpg', title: 'Untitled 29', year: '', alt: 'Untitled 29', desc: '', titleDe: 'Unbenannt 29', descDe: '' },
+    { n: 30, file: 'assets/works/work-30.jpg', title: 'Untitled 30', year: '', alt: 'Untitled 30', desc: '', titleDe: 'Unbenannt 30', descDe: '' },
+    { n: 31, file: 'assets/works/work-31.jpg', title: 'Untitled 31', year: '', alt: 'Untitled 31', desc: '', titleDe: 'Unbenannt 31', descDe: '' },
+    { n: 32, file: 'assets/works/work-32.jpg', title: 'Untitled 32', year: '', alt: 'Untitled 32', desc: '', titleDe: 'Unbenannt 32', descDe: '' }
   ];
   const COUNT = WORKS.length;
   const KEY = 'andreas-krings-work';
