@@ -142,11 +142,8 @@
   .work-figure{
     margin:0; position:relative; overflow:hidden;
     aspect-ratio:3/2; background:var(--surface);
-    border:1px solid var(--border);
-    transition:border-color .4s var(--ease);
   }
   .work-figure img{width:100%; height:100%; object-fit:cover; transition:transform .7s var(--ease)}
-  .work-card:hover .work-figure{border-color:color-mix(in oklch, var(--fg) 30%, var(--border))}
   .work-card:hover .work-figure img{transform:scale(1.035)}
 
   .work-reveal{
@@ -311,7 +308,7 @@
           <h1 class="dy-title" id="dy-title" data-od-id="dy-title" data-i18n="dy.title">Diary</h1>
           <div class="dy-sub">
             <p class="dy-intro" data-od-id="dy-intro" data-i18n="dy.intro">Pages from the sketchbook — photographed from the book.</p>
-            <p class="dy-count" data-od-id="dy-count" data-i18n="dy.count">3 chapters</p>
+            <p class="dy-count" data-od-id="dy-count" data-i18n="dy.count">4 chapters</p>
           </div>
         </div>
 
@@ -335,12 +332,21 @@
             </button>
           </li>
           <li>
-            <button type="button" class="work-card" data-ch="003" data-od-id="dy-ch-003" aria-label="Diary chapter 003 — 98 pages">
+            <button type="button" class="work-card" data-ch="003" data-od-id="dy-ch-003" aria-label="Diary chapter 003 — 50 pages">
               <span class="work-figure">
-                <img src="assets/diary/diary-113.jpg" alt="Diary chapter 003 — 98 pages — first page" width="1600" height="1067" loading="lazy">
-                <span class="work-reveal"><span class="work-reveal__index">003 · 98 pages</span></span>
+                <img src="assets/diary/diary-113.jpg" alt="Diary chapter 003 — 50 pages — first page" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">003 · 50 pages</span></span>
               </span>
-              <span class="work-caption"><span class="wc-meta">003 · 98 pages</span></span>
+              <span class="work-caption"><span class="wc-meta">003 · 50 pages</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-ch="004" data-od-id="dy-ch-004" aria-label="Diary chapter 004 — 48 pages">
+              <span class="work-figure">
+                <img src="assets/diary/diary-163.jpg" alt="Diary chapter 004 — 48 pages — first page" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">004 · 48 pages</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">004 · 48 pages</span></span>
             </button>
           </li>
         </ul>
@@ -394,7 +400,7 @@
       'dy.kicker': '03 — Tagebuch',
       'dy.title': 'Tagebuch',
       'dy.intro': 'Seiten aus dem Skizzenbuch — aus dem Buch fotografiert.',
-      'dy.count': '3 Kapitel',
+      'dy.count': '4 Kapitel',
       'dy.fs.aria': 'Tagebuch — Vollbild',
       'dy.fs.close.aria': 'Lichtbild schließen'
     }
@@ -499,7 +505,8 @@
   const CHAPTERS = [
     { id: '001', start: 1, end: 30 },
     { id: '002', start: 31, end: 112 },
-    { id: '003', start: 113, end: 210 }
+    { id: '003', start: 113, end: 162 },
+    { id: '004', start: 163, end: 210 }
   ];
   const cards = Array.from(document.querySelectorAll('.work-card[data-ch]'));
   const fs = document.getElementById('fs');
