@@ -23,7 +23,7 @@
   }
 
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth; scrollbar-gutter:stable both-edges}
   body{
     margin:0;
     background:var(--bg);
@@ -37,6 +37,8 @@
   img{display:block; max-width:100%}
   a{color:inherit; text-decoration:none}
   :focus-visible{outline:2px solid var(--accent); outline-offset:3px}
+  .skip-link{position:absolute; left:16px; top:-72px; z-index:100; background:var(--surface); color:var(--fg); border:1px solid var(--fg); font-family:var(--font-mono); font-size:11px; letter-spacing:.14em; text-transform:uppercase; padding:12px 18px; transition:top .2s var(--ease)}
+  .skip-link:focus-visible{top:12px; outline:2px solid var(--accent); outline-offset:2px}
 
   /* ---------- Shared ---------- */
   .shell{max-width:var(--measure); margin-inline:auto; padding-inline:var(--pad)}
@@ -103,7 +105,7 @@
   }
   .nav-link:hover{color:var(--accent)}
   .nav-link:hover::after,.nav-link:focus-visible::after{transform:scaleX(1)}
-  .lang-toggle{display:inline-flex; align-items:center; gap:8px; background:none; border:0; padding:6px 2px; cursor:pointer; font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; color:var(--muted); text-transform:uppercase; white-space:nowrap}
+  .lang-toggle{display:inline-flex; align-items:center; gap:8px; background:none; border:0; padding:9px 4px; cursor:pointer; font-family:var(--font-mono); font-size:11px; letter-spacing:.1em; color:var(--muted); text-transform:uppercase; white-space:nowrap}
   .lang-toggle__cur{color:var(--fg); font-weight:600}
   .lang-toggle:hover{color:var(--accent)}
   .lang-toggle:hover .lang-toggle__cur{color:var(--accent)}
@@ -376,7 +378,6 @@
     .site-header .lang-toggle{display:none}
     .nav-toggle{display:inline-block}
     .site-footer .shell{flex-wrap:wrap; row-gap:10px; justify-content:center}
-    .sec-head{flex-direction:column; align-items:flex-start; gap:18px}
     .sec-actions{flex-direction:column; align-items:flex-start; gap:2px}
     .scroll-cue{display:none}
     .hero-meta{flex-direction:column; align-items:flex-start; gap:10px}
@@ -401,6 +402,8 @@
 </style>
 </head>
 <body id="top">
+
+  <a class="skip-link" href="#main" data-od-id="skip-link">Skip to content</a>
 
   <header class="site-header" data-od-id="site-header">
     <div class="shell">
@@ -430,7 +433,7 @@
     <p class="menu-foot" data-i18n="menu.foot">Berlin, Germany · <a href="contact.html" data-od-id="menu-email" data-i18n="menu.foot.link">Send a message</a></p>
   </div>
 
-  <main>
+  <main id="main">
     <section class="hero" data-od-id="hero" aria-labelledby="hero-title">
       <div class="shell">
         <p class="kicker" data-od-id="hero-kicker" data-i18n="hero.kicker">Surrealist painter — est. 2012</p>
@@ -438,8 +441,6 @@
         <p class="hero-tag" data-od-id="hero-tagline" data-i18n="hero.tag">A world where gravity is optional.</p>
         <div class="hero-meta" data-od-id="hero-meta">
           <span data-i18n="hero.meta">Based in Berlin, Germany</span>
-          <span></span>
-          
         </div>
       </div>
       <div class="orb" role="button" tabindex="0" aria-label="View all works" data-od-id="hero-orb" data-i18n-aria="orb.aria">
@@ -480,7 +481,7 @@
         <div class="sec-head">
           <div>
             <p class="kicker" data-i18n="works.kicker">01 — Selected Works</p>
-            <h2 class="sec-title" id="works-title" data-od-id="works-title" style="font-size: 30px;" data-i18n="works.title">Works</h2>
+            <h2 class="sec-title" id="works-title" data-od-id="works-title" data-i18n="works.title">Works</h2>
           </div>
           <div class="sec-actions">
             <p class="sec-meta" data-od-id="works-meta" data-i18n="works.meta">2012 — 2026 · 9 selected</p>
@@ -490,7 +491,7 @@
 
         <ul class="works-grid" data-od-id="works-grid">
           <li>
-            <a class="work-card" href="work.html?n=1" data-od-id="work-card-work-01" aria-label="Untitled 01, ">
+            <a class="work-card" href="work.html?n=1" data-od-id="work-card-work-01" aria-label="Untitled 01">
               <figure class="work-figure">
                 <img src="assets/works/work-01.jpg" alt="Untitled 01" width="800" height="800">
                 <figcaption class="work-reveal">
@@ -503,7 +504,7 @@
             </a>
           </li>
           <li>
-            <a class="work-card" href="work.html?n=2" data-od-id="work-card-work-02" aria-label="Untitled 02, ">
+            <a class="work-card" href="work.html?n=2" data-od-id="work-card-work-02" aria-label="Untitled 02">
               <figure class="work-figure">
                 <img src="assets/works/work-02.jpg" alt="Untitled 02" width="800" height="800">
                 <figcaption class="work-reveal">
@@ -516,7 +517,7 @@
             </a>
           </li>
           <li>
-            <a class="work-card" href="work.html?n=3" data-od-id="work-card-work-03" aria-label="Untitled 03, ">
+            <a class="work-card" href="work.html?n=3" data-od-id="work-card-work-03" aria-label="Untitled 03">
               <figure class="work-figure">
                 <img src="assets/works/work-03.jpg" alt="Untitled 03" width="800" height="800">
                 <figcaption class="work-reveal">
@@ -529,7 +530,7 @@
             </a>
           </li>
           <li>
-            <a class="work-card" href="work.html?n=4" data-od-id="work-card-work-04" aria-label="Untitled 04, ">
+            <a class="work-card" href="work.html?n=4" data-od-id="work-card-work-04" aria-label="Untitled 04">
               <figure class="work-figure">
                 <img src="assets/works/work-04.jpg" alt="Untitled 04" width="800" height="800">
                 <figcaption class="work-reveal">
@@ -542,7 +543,7 @@
             </a>
           </li>
           <li>
-            <a class="work-card" href="work.html?n=5" data-od-id="work-card-work-05" aria-label="Untitled 05, ">
+            <a class="work-card" href="work.html?n=5" data-od-id="work-card-work-05" aria-label="Untitled 05">
               <figure class="work-figure">
                 <img src="assets/works/work-05.jpg" alt="Untitled 05" width="800" height="800">
                 <figcaption class="work-reveal">
@@ -555,7 +556,7 @@
             </a>
           </li>
           <li>
-            <a class="work-card" href="work.html?n=6" data-od-id="work-card-work-06" aria-label="Untitled 06, ">
+            <a class="work-card" href="work.html?n=6" data-od-id="work-card-work-06" aria-label="Untitled 06">
               <figure class="work-figure">
                 <img src="assets/works/work-06.jpg" alt="Untitled 06" width="800" height="800">
                 <figcaption class="work-reveal">
@@ -568,7 +569,7 @@
             </a>
           </li>
           <li>
-            <a class="work-card" href="work.html?n=7" data-od-id="work-card-work-07" aria-label="Untitled 07, ">
+            <a class="work-card" href="work.html?n=7" data-od-id="work-card-work-07" aria-label="Untitled 07">
               <figure class="work-figure">
                 <img src="assets/works/work-07.jpg" alt="Untitled 07" width="800" height="800">
                 <figcaption class="work-reveal">
@@ -581,7 +582,7 @@
             </a>
           </li>
           <li>
-            <a class="work-card" href="work.html?n=8" data-od-id="work-card-work-08" aria-label="Untitled 08, ">
+            <a class="work-card" href="work.html?n=8" data-od-id="work-card-work-08" aria-label="Untitled 08">
               <figure class="work-figure">
                 <img src="assets/works/work-08.jpg" alt="Untitled 08" width="800" height="800">
                 <figcaption class="work-reveal">
@@ -594,7 +595,7 @@
             </a>
           </li>
           <li>
-            <a class="work-card" href="work.html?n=9" data-od-id="work-card-work-09" aria-label="Untitled 09, ">
+            <a class="work-card" href="work.html?n=9" data-od-id="work-card-work-09" aria-label="Untitled 09">
               <figure class="work-figure">
                 <img src="assets/works/work-09.jpg" alt="Untitled 09" width="800" height="800">
                 <figcaption class="work-reveal">
@@ -615,7 +616,7 @@
         <div class="sec-head">
           <div>
             <p class="kicker" data-i18n="about.kicker">04 — Profile</p>
-            <h2 class="sec-title" id="about-title" data-od-id="about-title" style="font-size: 30px;" data-i18n="about.title">About</h2>
+            <h2 class="sec-title" id="about-title" data-od-id="about-title" data-i18n="about.title">About</h2>
           </div>
           <p class="sec-meta" data-i18n="about.meta">Mexico · b. 1994</p>
         </div>
@@ -631,9 +632,9 @@
             <p class="reveal" data-od-id="about-bio-1" data-i18n="about.bio1">A German-Mexican surrealist who lived in Mexico for 22 years and moved to Berlin in 2016. He originally wanted to study at the art academy, but chose a hands-on path instead and trained as a metalworker.</p>
             <p class="reveal" data-od-id="about-bio-2" data-i18n="about.bio2">Daily writing and drawing form the foundation of his artistic practice. From 2026, he opens a new chapter: in his own studio, he devotes himself fully to professional art-making.</p>
 
-            <blockquote class="pull-quote reveal" data-od-id="about-quote" style="margin-bottom: 60px; margin-top: 60px;" data-i18n="about.quote">“I don't paint impossible things. I paint things remembering that they are possible.”</blockquote>
+            <blockquote class="pull-quote reveal" data-od-id="about-quote" data-i18n="about.quote">“I don't paint impossible things. I paint things remembering that they are possible.”</blockquote>
 
-            <p class="practice reveal" data-od-id="about-practice" style="transform: translate(-1px, 26px);"><span data-i18n="practice.1">Oil on canvas</span><span data-i18n="practice.2">Charcoal on paper</span><span data-i18n="practice.3">Ink on paper</span></p>
+            <p class="practice reveal" data-od-id="about-practice"><span data-i18n="practice.1">Oil on canvas</span><span data-i18n="practice.2">Charcoal on paper</span><span data-i18n="practice.3">Ink on paper</span></p>
           </div>
         </div>
 
@@ -646,10 +647,10 @@
       </div>
     </section>
 
-    <section id="contact" data-od-id="section-contact" aria-labelledby="contact-title" style="transform: translate(0px, 43px);">
+    <section id="contact" data-od-id="section-contact" aria-labelledby="contact-title">
       <div class="shell">
-        <p class="kicker" style="transform: translate(6px, 50px);" data-i18n="contact.kicker">05 — Contact</p>
-        <h2 class="contact-title" id="contact-title" data-od-id="contact-title" style="font-size: 90px;"><a class="contact-title-link" href="contact.html" data-od-id="contact-title-link" style="font-size: 30px; transform: translate(7px, 16px); display: inline-block;" data-i18n="contact.title">Say hello.</a></h2>
+        <p class="kicker" data-i18n="contact.kicker">05 — Contact</p>
+        <h2 class="contact-title" id="contact-title" data-od-id="contact-title"><a class="contact-title-link" href="contact.html" data-od-id="contact-title-link" data-i18n="contact.title">Say hello.</a></h2>
         
 
         <div class="contact-cols">

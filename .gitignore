@@ -14,3 +14,7 @@ __pycache__/
 スクリーンショット-*.png
 drawing-*.png
 .dashboard-token.txt
+
+# Open Design runtime (skills, plugins)
+.od-skills/
+.hermes/
