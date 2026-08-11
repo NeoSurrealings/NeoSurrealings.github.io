@@ -44,7 +44,7 @@
     'work.title.12': 'Der Spiegel des Ozeans',
 
     // work titles 13+ (added via dashboard)
-    'work.title.13': 'Unbenannt 13',
+    'work.title.13': 'Mein Leuchtturm',
     'work.title.14': 'Unbenannt 14',
     'work.title.15': 'Unbenannt 15',
     'work.title.16': 'Unbenannt 16',
