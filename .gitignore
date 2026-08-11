@@ -24,3 +24,5 @@ drawing-*.png
 
 # Web3Forms access key (one-time local exchange, wiped after apply)
 web3forms-key.txt
+apply_github_pat.py
+apply_web3forms_key.py
