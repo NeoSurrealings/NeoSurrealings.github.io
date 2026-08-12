@@ -308,7 +308,7 @@
           <h1 class="dy-title" id="dy-title" data-od-id="dy-title" data-i18n="dy.title">Diary</h1>
           <div class="dy-sub">
             <p class="dy-intro" data-od-id="dy-intro" data-i18n="dy.intro">Pages from the sketchbook — photographed from the book.</p>
-            <p class="dy-count" data-od-id="dy-count" data-i18n="dy.count">4 chapters</p>
+            <p class="dy-count" data-od-id="dy-count" data-i18n="dy.count">5 chapters</p>
           </div>
         </div>
 
@@ -347,6 +347,15 @@
                 <span class="work-reveal"><span class="work-reveal__index">004 · 48 pages</span></span>
               </span>
               <span class="work-caption"><span class="wc-meta">004 · 48 pages</span></span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="work-card" data-ch="005" data-od-id="dy-ch-005" aria-label="Diary chapter 005 — 5 pages">
+              <span class="work-figure">
+                <img src="assets/diary/diary-211.jpg" alt="Diary chapter 005 — 5 pages — first page" width="1600" height="1067" loading="lazy">
+                <span class="work-reveal"><span class="work-reveal__index">005 · 5 pages</span></span>
+              </span>
+              <span class="work-caption"><span class="wc-meta">005 · 5 pages</span></span>
             </button>
           </li>
         </ul>
@@ -506,7 +515,8 @@
     { id: '001', start: 1, end: 30 },
     { id: '002', start: 31, end: 112 },
     { id: '003', start: 113, end: 162 },
-    { id: '004', start: 163, end: 210 }
+    { id: '004', start: 163, end: 210 },
+    { id: '005', start: 211, end: 215 }
   ];
   const cards = Array.from(document.querySelectorAll('.work-card[data-ch]'));
   const fs = document.getElementById('fs');
