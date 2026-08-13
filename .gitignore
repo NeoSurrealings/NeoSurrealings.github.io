@@ -27,11 +27,13 @@ web3forms-key.txt
 apply_github_pat.py
 apply_web3forms_key.py
 
+# GitHub OAuth login (client secret — NEVER publish)
+.oauth-config.json
+.session-secret
+
 # Internal tooling — NEVER publish to the public repo
-dashboard.html
 serve.py
 sync_from_dashboard.py
-dashboard-state.json
 Andreas Dashboard.command
 .github/workflows/sync.yml
 PHOTO-2026-08-09-21-48-11.jpg

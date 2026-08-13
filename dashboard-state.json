@@ -1,0 +1,348 @@
+{
+  "works": [
+    {
+      "n": 1,
+      "file": "assets/works/work-01.jpg",
+      "title": "La Primavera",
+      "year": "2017",
+      "desc": "",
+      "titleDe": "La primavera",
+      "descDe": "",
+      "video": ""
+    },
+    {
+      "n": 2,
+      "file": "assets/works/work-02.jpg",
+      "title": "My shadow",
+      "year": "2018",
+      "desc": "This shadow man represents a part from my self as in the \"self\" according to my readings on one of my primordial inspirations \"C. G. Jung\"",
+      "titleDe": "Mein Schatten",
+      "descDe": "",
+      "video": ""
+    },
+    {
+      "n": 3,
+      "file": "assets/works/work-03.jpg",
+      "title": "Untitled 03",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 03",
+      "descDe": ""
+    },
+    {
+      "n": 4,
+      "file": "assets/works/work-04.jpg",
+      "title": "Untitled 04",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 04",
+      "descDe": ""
+    },
+    {
+      "n": 5,
+      "file": "assets/works/work-05.jpg",
+      "title": "Untitled 05",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 05",
+      "descDe": ""
+    },
+    {
+      "n": 6,
+      "file": "assets/works/work-06.jpg",
+      "title": "Untitled 06",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 06",
+      "descDe": ""
+    },
+    {
+      "n": 7,
+      "file": "assets/works/work-07.jpg",
+      "title": "Untitled 07",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 07",
+      "descDe": ""
+    },
+    {
+      "n": 8,
+      "file": "assets/works/work-08.jpg",
+      "title": "Untitled 08",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 08",
+      "descDe": ""
+    },
+    {
+      "n": 9,
+      "file": "assets/works/work-09.jpg",
+      "title": "Untitled 09",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 09",
+      "descDe": ""
+    },
+    {
+      "n": 10,
+      "file": "assets/works/work-10.jpg",
+      "title": "Untitled 10",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 10",
+      "descDe": ""
+    },
+    {
+      "n": 11,
+      "file": "assets/works/work-11.jpg",
+      "title": "Untitled 11",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 11",
+      "descDe": ""
+    },
+    {
+      "n": 12,
+      "file": "assets/works/work-12.jpg",
+      "title": "Untitled 12",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 12",
+      "descDe": ""
+    },
+    {
+      "n": 13,
+      "file": "assets/works/work-13.jpg",
+      "title": "My lighthouse",
+      "year": "2024",
+      "desc": "",
+      "titleDe": "Mein Leuchtturm",
+      "descDe": "",
+      "video": ""
+    },
+    {
+      "n": 14,
+      "file": "assets/works/work-14.jpg",
+      "title": "Untitled 14",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 14",
+      "descDe": ""
+    },
+    {
+      "n": 15,
+      "file": "assets/works/work-15.jpg",
+      "title": "Untitled 15",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 15",
+      "descDe": ""
+    },
+    {
+      "n": 16,
+      "file": "assets/works/work-16.jpg",
+      "title": "Untitled 16",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 16",
+      "descDe": ""
+    },
+    {
+      "n": 17,
+      "file": "assets/works/work-17.jpg",
+      "title": "Untitled 17",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 17",
+      "descDe": ""
+    },
+    {
+      "n": 18,
+      "file": "assets/works/work-18.jpg",
+      "title": "Untitled 18",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 18",
+      "descDe": ""
+    },
+    {
+      "n": 19,
+      "file": "assets/works/work-19.jpg",
+      "title": "Untitled 19",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 19",
+      "descDe": ""
+    },
+    {
+      "n": 20,
+      "file": "assets/works/work-20.jpg",
+      "title": "Untitled 20",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 20",
+      "descDe": ""
+    },
+    {
+      "n": 21,
+      "file": "assets/works/work-21.jpg",
+      "title": "Untitled 21",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 21",
+      "descDe": ""
+    },
+    {
+      "n": 22,
+      "file": "assets/works/work-22.jpg",
+      "title": "Untitled 22",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 22",
+      "descDe": ""
+    },
+    {
+      "n": 23,
+      "file": "assets/works/work-23.jpg",
+      "title": "Untitled 23",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 23",
+      "descDe": ""
+    },
+    {
+      "n": 24,
+      "file": "assets/works/work-24.jpg",
+      "title": "Untitled 24",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 24",
+      "descDe": ""
+    },
+    {
+      "n": 25,
+      "file": "assets/works/work-25.jpg",
+      "title": "Untitled 25",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 25",
+      "descDe": ""
+    },
+    {
+      "n": 26,
+      "file": "assets/works/work-26.jpg",
+      "title": "Untitled 26",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 26",
+      "descDe": ""
+    },
+    {
+      "n": 27,
+      "file": "assets/works/work-27.jpg",
+      "title": "Untitled 27",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 27",
+      "descDe": ""
+    },
+    {
+      "n": 28,
+      "file": "assets/works/work-28.jpg",
+      "title": "Untitled 28",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 28",
+      "descDe": ""
+    },
+    {
+      "n": 29,
+      "file": "assets/works/work-29.jpg",
+      "title": "Untitled 29",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 29",
+      "descDe": ""
+    },
+    {
+      "n": 30,
+      "file": "assets/works/work-30.jpg",
+      "title": "Untitled 30",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 30",
+      "descDe": ""
+    },
+    {
+      "n": 31,
+      "file": "assets/works/work-31.jpg",
+      "title": "Untitled 31",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 31",
+      "descDe": ""
+    },
+    {
+      "n": 32,
+      "file": "assets/works/work-32.jpg",
+      "title": "Untitled 32",
+      "year": "",
+      "desc": "",
+      "titleDe": "Unbenannt 32",
+      "descDe": ""
+    }
+  ],
+  "schedule": [
+    {
+      "id": 1,
+      "year": "2026",
+      "title": "Photoshooting",
+      "titleDe": "Fotoshooting",
+      "place": "Studio",
+      "link": "",
+      "period": "08 Aug"
+    }
+  ],
+  "photos": [
+    {
+      "id": 1,
+      "file": "assets/portrait-andreas-2.png"
+    },
+    {
+      "id": 2,
+      "file": "assets/portrait-andreas-3.png"
+    },
+    {
+      "id": 3,
+      "file": "assets/portrait-andreas-4.png"
+    },
+    {
+      "id": 4,
+      "file": "assets/portrait-andreas-5.png"
+    }
+  ],
+  "diary": [
+    {
+      "id": "001",
+      "start": 1,
+      "count": 30
+    },
+    {
+      "id": "002",
+      "start": 31,
+      "count": 82
+    },
+    {
+      "id": "003",
+      "start": 113,
+      "count": 50
+    },
+    {
+      "id": "004",
+      "start": 163,
+      "count": 48
+    }
+  ],
+  "uploads": {},
+  "uploadedAt": "2026-08-12T00:25:13.893Z"
+}
