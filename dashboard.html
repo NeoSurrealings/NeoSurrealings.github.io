@@ -1180,8 +1180,7 @@
       hideLogin();
       $('loginBtn').disabled = false;
       $('loginBtn').textContent = 'Sign in';
-      pubStatus('Signed in — ready to publish.', 'ok');
-      setPublishEnabled(true);
+      checkConnection();
     }).catch(function(){
       showLogin('Wrong password — please try again.');
       $('loginBtn').disabled = false;
@@ -2569,15 +2568,21 @@
               setPublishEnabled(true);
             } else { throw new Error('bad token'); }
           }).catch(function(){
-            pubStatus('Not connected. <b>Open this dashboard from the local server to publish.</b> On the Mac, double-click <b>Andreas Dashboard.command</b>, then on your phone visit:<br><code>http://&lt;Mac-IP&gt;:8765/dashboard.html</code>', 'err');
+            try {
+              sessionStorage.removeItem('ak-gh-token');
+              localStorage.removeItem('ak-gh-token');
+              localStorage.removeItem('ak-api-token');
+            } catch(e){}
+            pubStatus('Not connected — the saved sign-in is no longer valid. <b>Sign in with the password again.</b>', 'err');
+            showLogin('Your saved sign-in is no longer valid — please sign in again.');
             setPublishEnabled(false);
           });
         }
-        pubStatus('Not connected. <b>Open this dashboard from the local server to publish.</b> On the Mac, double-click <b>Andreas Dashboard.command</b>, then on your phone visit:<br><code>http://&lt;Mac-IP&gt;:8765/dashboard.html</code> (same WiFi).', 'err');
+        pubStatus('Not connected. <b>Sign in with the password to publish.</b>', 'err');
         setPublishEnabled(false);
       }
     }).catch(function(){
-      pubStatus('Not connected. <b>To publish:</b> double-click <b>Andreas Dashboard.command</b> on the Mac, then open <code>http://&lt;Mac-IP&gt;:8765/dashboard.html</code> on any device on the same WiFi.', 'err');
+      pubStatus('Not connected. <b>Sign in with the password to publish.</b> (Local Mac mode: double-click Andreas Dashboard.command.)', 'err');
       setPublishEnabled(false);
     });
   }
