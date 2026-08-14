@@ -206,11 +206,12 @@
     {
       "n": 23,
       "file": "assets/works/work-23.jpg",
-      "title": "Untitled 23",
-      "year": "",
-      "desc": "",
-      "titleDe": "Unbenannt 23",
-      "descDe": ""
+      "title": "Surreal landscape 02",
+      "year": "2025",
+      "desc": "Ink on paper",
+      "titleDe": "Surreal Landschaft 02",
+      "descDe": "Tusche auf Papier",
+      "video": ""
     },
     {
       "n": 24,
@@ -251,11 +252,12 @@
     {
       "n": 28,
       "file": "assets/works/work-28.jpg",
-      "title": "Untitled 28",
-      "year": "",
-      "desc": "",
-      "titleDe": "Unbenannt 28",
-      "descDe": ""
+      "title": "Unknown friendship",
+      "year": "2018",
+      "desc": "Ink on paper",
+      "titleDe": "Unbekanntes Freundschaft",
+      "descDe": "Tusche auf Papier",
+      "video": ""
     },
     {
       "n": 29,
@@ -350,5 +352,5 @@
     }
   ],
   "uploads": {},
-  "uploadedAt": "2026-08-14T11:26:41.598Z"
+  "uploadedAt": "2026-08-14T11:33:29.976Z"
 }
