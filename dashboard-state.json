@@ -278,11 +278,12 @@
     {
       "n": 31,
       "file": "assets/works/work-31.jpg",
-      "title": "Untitled 31",
-      "year": "",
-      "desc": "",
-      "titleDe": "Unbenannt 31",
-      "descDe": ""
+      "title": "In search of new lands",
+      "year": "2016",
+      "desc": "Oil on Arches paper",
+      "titleDe": "Auf die Suche von neuen Landschaften",
+      "descDe": "Öl auf Arches Papier",
+      "video": ""
     },
     {
       "n": 32,
@@ -348,5 +349,5 @@
     }
   ],
   "uploads": {},
-  "uploadedAt": "2026-08-14T11:04:42.754Z"
+  "uploadedAt": "2026-08-14T11:09:35.209Z"
 }
