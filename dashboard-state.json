@@ -310,7 +310,8 @@
     },
     {
       "id": 2,
-      "file": "assets/portrait-andreas-3.png"
+      "file": "Portrait of Andreas Krings weile painting \"la primavera\" in 2017 Berlin",
+      "label": ""
     },
     {
       "id": 3,
@@ -344,5 +345,5 @@
     }
   ],
   "uploads": {},
-  "uploadedAt": "2026-08-12T00:25:13.893Z"
+  "uploadedAt": "2026-08-14T10:43:06.314Z"
 }
