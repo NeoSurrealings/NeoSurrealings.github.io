@@ -306,12 +306,13 @@
   "photos": [
     {
       "id": 1,
-      "file": "assets/portrait-andreas-2.png"
+      "file": "assets/portrait-andreas-2.png",
+      "label": "The artist in the woods"
     },
     {
       "id": 2,
-      "file": "Portrait of Andreas Krings weile painting \"la primavera\" in 2017 Berlin",
-      "label": ""
+      "file": "Portrait 2017",
+      "label": "Portrait of Andreas Krings weile painting \"la primavera\" in 2017 Berlin"
     },
     {
       "id": 3,
@@ -345,5 +346,5 @@
     }
   ],
   "uploads": {},
-  "uploadedAt": "2026-08-14T10:43:06.314Z"
+  "uploadedAt": "2026-08-14T10:53:34.805Z"
 }
