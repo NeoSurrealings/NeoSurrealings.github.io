@@ -23,11 +23,12 @@
     {
       "n": 3,
       "file": "assets/works/work-03.jpg",
-      "title": "Untitled 03",
-      "year": "",
-      "desc": "",
+      "title": "Harvesting the path",
+      "year": "2024",
+      "desc": "Oil on Canvas \n90cm x 50cm",
       "titleDe": "Unbenannt 03",
-      "descDe": ""
+      "descDe": "",
+      "video": ""
     },
     {
       "n": 4,
@@ -346,5 +347,5 @@
     }
   ],
   "uploads": {},
-  "uploadedAt": "2026-08-14T10:53:34.805Z"
+  "uploadedAt": "2026-08-14T11:00:09.815Z"
 }
