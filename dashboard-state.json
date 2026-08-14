@@ -196,11 +196,12 @@
     {
       "n": 22,
       "file": "assets/works/work-22.jpg",
-      "title": "Untitled 22",
-      "year": "",
-      "desc": "",
-      "titleDe": "Unbenannt 22",
-      "descDe": ""
+      "title": "Surreal landscape 01",
+      "year": "2025",
+      "desc": "Ink on paper",
+      "titleDe": "Surreal Landschaft 01",
+      "descDe": "Tusche auf Papier",
+      "video": ""
     },
     {
       "n": 23,
@@ -347,5 +348,5 @@
     }
   ],
   "uploads": {},
-  "uploadedAt": "2026-08-14T11:00:09.815Z"
+  "uploadedAt": "2026-08-14T11:04:42.754Z"
 }
