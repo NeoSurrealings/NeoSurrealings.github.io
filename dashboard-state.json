@@ -5,7 +5,7 @@
       "file": "assets/works/work-01.jpg",
       "title": "La Primavera",
       "year": "2017",
-      "desc": "",
+      "desc": "Oil on wood\n110cm x 195cm",
       "titleDe": "La primavera",
       "descDe": "",
       "video": ""
@@ -15,7 +15,7 @@
       "file": "assets/works/work-02.jpg",
       "title": "My shadow",
       "year": "2018",
-      "desc": "This shadow man represents a part from my self as in the \"self\" according to my readings on one of my primordial inspirations \"C. G. Jung\"",
+      "desc": "Charcoal on wood\n195cm x 110cm \n\nThis shadow man represents a part from my self as in the \"self\" according to my readings on one of my primordial inspirations \"C. G. Jung\"",
       "titleDe": "Mein Schatten",
       "descDe": "",
       "video": ""
@@ -25,7 +25,7 @@
       "file": "assets/works/work-03.jpg",
       "title": "Harvesting the path",
       "year": "2024",
-      "desc": "Oil on Canvas \n90cm x 50cm",
+      "desc": "Oil on Canvas \n100cm x 50cm",
       "titleDe": "Unbenannt 03",
       "descDe": "",
       "video": ""
@@ -35,9 +35,10 @@
       "file": "assets/works/work-04.jpg",
       "title": "Untitled 04",
       "year": "",
-      "desc": "",
+      "desc": "Oil on Canvas \n40cm x 60cm",
       "titleDe": "Unbenannt 04",
-      "descDe": ""
+      "descDe": "",
+      "video": ""
     },
     {
       "n": 5,
@@ -352,5 +353,5 @@
     }
   ],
   "uploads": {},
-  "uploadedAt": "2026-08-14T11:33:29.976Z"
+  "uploadedAt": "2026-08-15T11:40:49.527Z"
 }
